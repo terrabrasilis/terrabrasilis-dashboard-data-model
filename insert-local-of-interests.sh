@@ -34,8 +34,7 @@ for d in */ ; do
         update private."$name"_"${loi}" set geom = ST_SetSRID(geom, 4674)  where ST_SRID(geom) <> 4674;"
 
         psql postgresql://$user:$password@$host:$port/$database << EOF
-         \timing
-         $Query
+            $Query
 EOF
 
     done
