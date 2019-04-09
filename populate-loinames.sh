@@ -56,21 +56,6 @@ for d in */ ; do
             id_data=${data[$j]}
             echo "data: "$id_data
 
-            #    declare -a id_loi
-            #    declare -a loi
-            #    ctl=-1
-            #    while read -a row
-            #    do
-            #        if [ "$ctl" -gt 0 ]; then                   
-            #            id_loi[ctl]="${row[0]}"
-            #            loi[ctl]="${row[2]}"
-            #            echo ${id_loi[$ctl]}" "${loi[$ctl]}
-            #        fi
-
-            #        let "ctl++"
-                    
-            #    done < <(echo SELECT DISTINCT l.id, l.name FROM data_loi_loinames dll INNER JOIN data d ON \(dll.id_data = d.id AND d.id = "$id_data"\) INNER JOIN loi_loinames ll ON \(dll.id_loi_loinames = ll.id\) INNER JOIN loi l ON \(ll.id_loi = l.id\) ORDER BY l.id | psql "postgresql://$user:$password@$host:$port/$database" -q);
-
             declare -a id_loi
             ctl=-1
             while read -a row
@@ -93,9 +78,7 @@ for d in */ ; do
                 
                 echo "id_loi = "${id_loi[$k]}
                 
-                Query="SET client_min_messages TO WARNING;
-                
-                WITH rows AS (
+                Query="WITH rows AS (
                     INSERT INTO public.loinames (name, geom)
                     SELECT name, geom
                     FROM private."${biome}"_"${loi}"
@@ -112,9 +95,7 @@ EOF
 
             done
 
-            Query="SET client_min_messages TO WARNING;
-                
-            INSERT INTO public.data_loi_loinames (id_loi_loinames) SELECT ll.id FROM loi_loinames ll WHERE NOT EXISTS (SELECT dll.id_loi_loinames FROM data_loi_loinames dll WHERE ll.id = dll.id_loi_loinames);
+            Query="INSERT INTO public.data_loi_loinames (id_loi_loinames) SELECT ll.id FROM loi_loinames ll WHERE NOT EXISTS (SELECT dll.id_loi_loinames FROM data_loi_loinames dll WHERE ll.id = dll.id_loi_loinames);
 
             UPDATE data_loi_loinames SET id_data = "$id_data" WHERE id_data is null;"
 
