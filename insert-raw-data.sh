@@ -21,11 +21,10 @@ for d in */ ; do
     
     length=${#files[@]}
     
-    for ((i=0; i<$length; i++));
-     do
+    for ((i=0; i<$length; i++)); do
         shapefile=${files[i]:2:${#files[i]}}
         echo ++++++++++++++++++++++++++++++++++ "data: " $shapefile
-        data=${shapefile%.*}   
+        data=${shapefile%.*}
 
         time shp2pgsql -I -s 4674 $shapefile private.$data | psql "postgresql://$user:$password@$host:$port/$database" -q
 
