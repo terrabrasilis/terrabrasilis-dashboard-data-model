@@ -112,14 +112,14 @@ psql postgresql://$user:$password@$host:$port/$database << EOF
 
   /* insert loi */
 
-  INSERT INTO public.loi(id, name, description) VALUES (1, 'UF', 'States of Brazil');
+  INSERT INTO public.loi(id, name, description) VALUES (1, 'uf', 'States of Brazil');
 
-  INSERT INTO public.loi(id, name, description) VALUES (2, 'MUN', 'Municipalities of Brazil');
+  INSERT INTO public.loi(id, name, description) VALUES (2, 'mun', 'Municipalities of Brazil');
 
-  INSERT INTO public.loi(id, name, description) VALUES (3, 'ConsUnit', 'Conservation units of Brazil');
+  INSERT INTO public.loi(id, name, description) VALUES (3, 'consunit', 'Conservation units of Brazil');
 
-  INSERT INTO public.loi(id, name, description) VALUES (4, 'Indi', 'Indigeneous Areas of Brazil');
+  INSERT INTO public.loi(id, name, description) VALUES (4, 'indi', 'Indigeneous Areas of Brazil');
 
-  INSERT INTO public.loi(id, name, description) VALUES (5, 'Pathrow', 'Landsat WSR2 Descending Path Row');
+  INSERT INTO public.loi(id, name, description) VALUES (5, 'pathrow', 'Landsat WSR2 Descending Path Row');
 
 EOF

@@ -10,9 +10,7 @@ port="$4"
 database="$5"
 
 psql postgresql://$user:$password@$host:$port/$database << EOF
-	\timing
-    
-    /* create raw data schema */
+	/* create raw data schema */
 	DROP SCHEMA private CASCADE;
 
 	CREATE SCHEMA private;
