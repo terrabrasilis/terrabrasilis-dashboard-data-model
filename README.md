@@ -51,7 +51,9 @@ Figure 2 - Entity-Relationship Model for TerraBrasilis Dashboard.
 </p>
 </p>
 
-How to run any test regarding specific loinames (e.g., Altamira) from a defined loi (e.g., municipalities) and periods of time (e.g., 2018) can found below.
+## Tests
+
+How to run any test regarding specific loinames (e.g., Altamira) from a defined loi (e.g., municipalities) and periods of time (e.g., 2018) can be found below.
 
 ``` bash
 tests/./test-amazon.sh user password host port dashboard-data-model loi loiname year
