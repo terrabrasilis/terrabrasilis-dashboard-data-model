@@ -1,5 +1,5 @@
 /* create raw data schema */
-DROP SCHEMA private CASCADE;
+DROP SCHEMA IF EXISTS private CASCADE;
 
 CREATE SCHEMA private;
 

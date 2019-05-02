@@ -1,7 +1,8 @@
 /* create extension */
-CREATE EXTENSION postgis;
+CREATE EXTENSION IF NOT EXISTS postgis;
 
 /* initialize database model */
+DROP TABLE IF EXISTS public.data CASCADE;
 CREATE TABLE public.data
 (
     name text UNIQUE,
@@ -11,6 +12,7 @@ CREATE TABLE public.data
 
 ALTER TABLE public.data ADD COLUMN id SERIAL PRIMARY KEY;
 
+DROP TABLE IF EXISTS public.period CASCADE;
 CREATE TABLE public.period
 (
     start_date date,
@@ -23,6 +25,7 @@ ALTER TABLE public.period ADD COLUMN id SERIAL PRIMARY KEY;
 
 CREATE INDEX period_id_data_idx ON period (id_data);
 
+DROP TABLE IF EXISTS public.class CASCADE;
 CREATE TABLE public.class
 (
     name text UNIQUE,
@@ -32,6 +35,7 @@ CREATE TABLE public.class
 
 ALTER TABLE public.class ADD COLUMN id SERIAL PRIMARY KEY;
 
+DROP TABLE IF EXISTS public.data_class CASCADE;
 CREATE TABLE public.data_class
 (
     id_data int,
@@ -46,6 +50,7 @@ CREATE INDEX data_class_id_class_FK_idx ON data_class (id_class);
 
 CREATE INDEX data_class_id_data_FK_idx ON data_class (id_data);
 
+DROP TABLE IF EXISTS public.filter CASCADE;
 CREATE TABLE public.filter
 (
     type text
@@ -53,6 +58,7 @@ CREATE TABLE public.filter
 
 ALTER TABLE public.filter ADD COLUMN id SERIAL PRIMARY KEY;
 
+DROP TABLE IF EXISTS public.data_filter CASCADE;
 CREATE TABLE public.data_filter
 (
     id_data int,
@@ -67,6 +73,7 @@ CREATE INDEX data_filter_id_filter_FK_idx ON data_filter (id_filter);
 
 CREATE INDEX data_filter_id_data_FK_idx ON data_class (id_data);
 
+DROP TABLE IF EXISTS public.loi CASCADE;
 CREATE TABLE public.loi
 (
     name text UNIQUE,
@@ -75,6 +82,7 @@ CREATE TABLE public.loi
 
 ALTER TABLE public.loi ADD COLUMN id SERIAL PRIMARY KEY;
 
+DROP TABLE IF EXISTS public.loinames CASCADE;
 CREATE TABLE public.loinames
 (
     name text,
@@ -87,6 +95,7 @@ SELECT AddGeometryColumn ('public', 'loinames', 'geom', 4674, 'MULTIPOLYGON', 2)
 
 CREATE INDEX loinames_geom_idx ON loinames USING GIST (geom);
 
+DROP TABLE IF EXISTS public.loi_loinames CASCADE;
 CREATE TABLE public.loi_loinames
 (
     id_loi int,
@@ -97,6 +106,7 @@ CREATE TABLE public.loi_loinames
 
 ALTER TABLE public.loi_loinames ADD COLUMN id SERIAL PRIMARY KEY;
 
+DROP TABLE IF EXISTS public.data_loi_loinames CASCADE;
 CREATE TABLE public.data_loi_loinames
 (
     id_data int,
@@ -111,6 +121,7 @@ CREATE INDEX data_loi_loinames_id_data_FK_idx ON data_loi_loinames (id_data);
 
 CREATE INDEX data_loi_loinames_id_loi_loinames_FK_idx ON data_loi_loinames (id_loi_loinames);
 
+DROP TABLE IF EXISTS public.features CASCADE;
 CREATE TABLE public.features
 (
     id_period int,
@@ -140,6 +151,7 @@ CREATE SEQUENCE public.application_id_seq INCREMENT 1 START 1 MINVALUE 1 MAXVALU
 
 ALTER SEQUENCE public.application_id_seq OWNER TO postgres;
 
+DROP TABLE IF EXISTS public.application CASCADE;
 CREATE TABLE public.application
 (
     id bigint NOT NULL DEFAULT nextval('application_id_seq'::regclass),

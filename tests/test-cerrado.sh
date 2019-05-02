@@ -1,16 +1,19 @@
 #!/bin/bash
-
+source "../pg_config.sh"
+loi="$1"
+loiname="$2"
+year="$3"
 # pass username, password, host and database name as parameter
 echo "CREATING CERRADO DATABASE TEST FOR SPECIFIC LOCAL OF INTEREST NAME AND YEAR..."
 
-user="$1"
-password="$2"
-host="$3"
-port="$4"
-database="$5"
-loi="$6"
-loiname="$7"
-year="$8"
+#user="$1"
+#password="$2"
+#host="$3"
+#port="$4"
+#database="$5"
+#loi="$6"
+#loiname="$7"
+#year="$8"
 
 Query="CREATE TABLE private.cerrado_${loiname} AS SELECT * FROM private.cerrado_${loi} WHERE name LIKE '${loiname}';
 
