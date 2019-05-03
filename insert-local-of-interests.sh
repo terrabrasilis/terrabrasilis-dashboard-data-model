@@ -8,36 +8,53 @@ password="$2"
 host="$3"
 port="$4"
 database="$5"
+processing_filter="$6"
+
+export PGPASSWORD=$password
+PG_CON="-d $database -U $user -h $host"
+BASE_PATH=`pwd`
+
+IFS=', ' read -r -a filter <<< "$processing_filter"
 
 cd local-of-interest-processing/
 
 for d in */ ; do
-    cd $d
 
-    name=${d%?}
-    echo ------------------------------------- "$name"
+    dtest="${d///}"
 
-    files=(`find . -type f -name "*.shp"`)
-    
-    length=${#files[@]}
-    
-    for ((i=0; i<$length; i++));
-     do
-        shapefile=${files[i]:2:${#files[i]}}
-        echo ++++++++++++++++++++++++++++++++++ "loi: " $shapefile
-        loi=${shapefile%.*}
+    if [[ " ${filter[@]} " =~ " ${dtest} " ]]; then
+
+        cd $d
+
+        name=${d%?}
+        echo ------------------------------------- "$name"
+
+        files=(`find . -type f -name "*.shp"`)
         
-        time shp2pgsql -I -s 4674 -W "UTF-8" $shapefile private.$name"_"${loi} --quiet | psql "postgresql://$user:$password@$host:$port/$database" -q
+        length=${#files[@]}
+        
+        for ((i=0; i<$length; i++));
+        do
+            shapefile=${files[i]:2:${#files[i]}}
+            echo ++++++++++++++++++++++++++++++++++ "loi: " $shapefile
+            loi=${shapefile%.*}
 
-        Query="update private."$name"_"${loi}" set geom = st_multi(st_collectionextract(st_makevalid(geom),3)) where st_isvalid(geom) = false;
+            DROP_OLD="DROP TABLE IF EXISTS private."$name"_"$loi";"
+            psql $PG_CON -c "$DROP_OLD"
+            
+            time shp2pgsql -I -s 4674 -W "UTF-8" $shapefile private.$name"_"${loi} --quiet | psql "postgresql://$user:$password@$host:$port/$database" -q
 
-        update private."$name"_"${loi}" set geom = ST_SetSRID(geom, 4674)  where ST_SRID(geom) <> 4674;"
+            Query="update private."$name"_"${loi}" set geom = st_multi(st_collectionextract(st_makevalid(geom),3)) where st_isvalid(geom) = false;
 
-        psql postgresql://$user:$password@$host:$port/$database << EOF
-            $Query
-EOF
+            update private."$name"_"${loi}" set geom = ST_SetSRID(geom, 4674)  where ST_SRID(geom) <> 4674;"
 
-    done
+            RESPONSE_QUERY=$($BASE_PATH/exec_query.sh $user $host $port $database "$Query")
+            echo "PSQL Return: $RESPONSE_QUERY"
 
-    cd ../
+        done
+
+        cd ../
+    else
+        echo "abort $d"
+    fi
 done

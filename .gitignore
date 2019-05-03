@@ -1,0 +1,6 @@
+pg_config.sh
+
+# ignore raw data directory
+raw-data-processing/*
+
+*.log
