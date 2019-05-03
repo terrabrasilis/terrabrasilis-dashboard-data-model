@@ -9,6 +9,7 @@ host="$3"
 port="$4"
 database="$5"
 
+# psql -h $host -d $database -U $user -W $password -p $port -a -w -f metadata.sql
 psql postgresql://$user:$password@$host:$port/$database << EOF
   /* insert application */
 
