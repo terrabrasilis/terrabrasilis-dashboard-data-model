@@ -11,5 +11,6 @@ database="$5"
 
 # if password has no exported yet, exporting here.
 export PGPASSWORD=$password
+PG_CON="-d $database -U $user -h $host -p $port"
 
-psql -h $host -d $database -U $user -p $port -f metadata.sql
+psql $PG_CON -f metadata.sql

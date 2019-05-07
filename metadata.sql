@@ -1,3 +1,27 @@
+  BEGIN;
+  
+  /* clean all metadata tables using disable check constraints  */
+  ALTER TABLE public.features DISABLE TRIGGER ALL;
+  ALTER TABLE public.application DISABLE TRIGGER ALL;
+  ALTER TABLE public.class DISABLE TRIGGER ALL;
+  ALTER TABLE public.data DISABLE TRIGGER ALL;
+  ALTER TABLE public.data_class DISABLE TRIGGER ALL;
+  ALTER TABLE public.filter DISABLE TRIGGER ALL;
+  ALTER TABLE public.data_filter DISABLE TRIGGER ALL;
+  ALTER TABLE public.period DISABLE TRIGGER ALL;
+  ALTER TABLE public.loi DISABLE TRIGGER ALL;
+
+  DELETE FROM public.application;
+  ALTER SEQUENCE public.application_id_seq RESTART WITH 1;
+  DELETE FROM public.class;
+  DELETE FROM public.data;
+  DELETE FROM public.data_class;
+  DELETE FROM public.filter;
+  DELETE FROM public.data_filter;
+  DELETE FROM public.period;
+  DELETE FROM public.loi;
+
+  
   /* insert application */
 
   INSERT INTO public.application(identifier, name, created) VALUES ('prodes_cerrado', 'Dashboard of the Prodes in the Cerrado', now());
@@ -40,9 +64,9 @@
 
   /* insert filter */
 
-  INSERT INTO public.filter(type) VALUES ('fid_area >= 0.0625');
+  INSERT INTO public.filter(id, type) VALUES (1, 'fid_area >= 0.0625');
 
-  INSERT INTO public.filter(type) VALUES ('fid_area >= 0.01');
+  INSERT INTO public.filter(id, type) VALUES (2, 'fid_area >= 0.01');
 
   /* insert data_filter */
 
@@ -133,3 +157,17 @@
   INSERT INTO public.loi(id, name, description) VALUES (4, 'indi', 'Indigeneous Areas of Brazil');
 
   -- INSERT INTO public.loi(id, name, description) VALUES (5, 'pathrow', 'Landsat WSR2 Descending Path Row');
+
+
+  /* Enable all constraints after commit */
+  ALTER TABLE public.features ENABLE TRIGGER ALL;
+  ALTER TABLE public.application ENABLE TRIGGER ALL;
+  ALTER TABLE public.class ENABLE TRIGGER ALL;
+  ALTER TABLE public.data ENABLE TRIGGER ALL;
+  ALTER TABLE public.data_class ENABLE TRIGGER ALL;
+  ALTER TABLE public.filter ENABLE TRIGGER ALL;
+  ALTER TABLE public.data_filter ENABLE TRIGGER ALL;
+  ALTER TABLE public.period ENABLE TRIGGER ALL;
+  ALTER TABLE public.loi ENABLE TRIGGER ALL;
+
+  COMMIT;

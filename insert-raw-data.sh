@@ -11,7 +11,7 @@ database="$5"
 processing_filter="$6"
 
 export PGPASSWORD=$password
-PG_CON="-d $database -U $user -h $host"
+PG_CON="-d $database -U $user -h $host -p $port"
 BASE_PATH=`pwd`
 
 IFS=', ' read -r -a filter <<< "$processing_filter"
@@ -44,7 +44,7 @@ for d in */ ; do
             DROP_OLD="DROP TABLE IF EXISTS private."$data"_subdivided CASCADE;"
             psql $PG_CON -c "$DROP_OLD"
 
-            time shp2pgsql -I -s 4674 $shapefile private.$data | psql "postgresql://$user:$password@$host:$port/$database" -q
+            time shp2pgsql -I -s 4674 $shapefile private.$data | psql $PG_CON -q
 
             Query="update private."$data" set geom = st_multi(st_collectionextract(st_makevalid(geom),3)) where st_isvalid(geom) = false;
 
