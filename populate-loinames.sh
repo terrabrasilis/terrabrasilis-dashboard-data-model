@@ -10,7 +10,7 @@ port="$4"
 database="$5"
 processing_filter="$6"
 
-PG_CON="-d $database -U $user -h $host"
+PG_CON="-d $database -U $user -h $host -p $port"
 BASE_PATH=`pwd`
 
 IFS=', ' read -r -a filter <<< "$processing_filter"
@@ -55,6 +55,7 @@ for d in */ ; do
                         INSERT INTO public.loinames (name, geom)
                         SELECT name, geom
                         FROM private."${biome}"_"${loi}"
+                        WHERE name not in (SELECT name FROM public.loinames)
                         RETURNING gid
                         )
 
