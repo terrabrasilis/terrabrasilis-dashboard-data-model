@@ -48,7 +48,7 @@ export PGPASSWORD=$password
 # Start configurations
 # -------------------------------------------------
 # Use YES to enable or another word to NO
-MODEL="NO"
+MODEL="YES"
 DATA="YES"
 METADATA="YES"
 FEATURES="YES"
@@ -70,7 +70,7 @@ FEATURES="YES"
 # Configure what data you want processing. Only if DATA parameter is equal YES.
 # Currently the complete list are: "amazon, cerrado, legal-amazon, pampa, pantanal"
 # -------------------------------------------------
-processing_filter="pampa, pantanal"
+processing_filter="amazon, legal-amazon"
 # -------------------------------------------------
 # End configurations
 # -------------------------------------------------
