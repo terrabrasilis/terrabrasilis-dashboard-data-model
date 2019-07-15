@@ -92,6 +92,8 @@
 
   /* insert period */
 
+  /* PRODES CERRADO */
+
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (1, 1, '1988-08-01', '2000-07-31');
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (2, 1, '2000-08-01', '2002-07-31');
@@ -116,35 +118,59 @@
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (12, 1, '2016-08-01', '2017-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (19, 1, '2017-08-01', '2018-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (13, 1, '2017-08-01', '2018-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (13, 2, '2012-08-01', '2013-07-31');
+  /* PRODES AMAZON */
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (14, 2, '2013-08-01', '2014-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (21, 2, '2008-08-01', '2009-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (15, 2, '2014-08-01', '2015-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (22, 2, '2009-08-01', '2010-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (16, 2, '2015-08-01', '2016-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (23, 2, '2010-08-01', '2011-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (17, 2, '2016-08-01', '2017-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (24, 2, '2011-08-01', '2012-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (18, 2, '2017-08-01', '2018-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (25, 2, '2012-08-01', '2013-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (20, 3, '2012-08-01', '2013-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (26, 2, '2013-08-01', '2014-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (21, 3, '2013-08-01', '2014-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (27, 2, '2014-08-01', '2015-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (22, 3, '2014-08-01', '2015-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (28, 2, '2015-08-01', '2016-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (23, 3, '2015-08-01', '2016-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (29, 2, '2016-08-01', '2017-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (24, 3, '2016-08-01', '2017-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (30, 2, '2017-08-01', '2018-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (25, 3, '2017-08-01', '2018-07-31');
+  /* PRODES LEGAL AMAZON */
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (26, 4, '2000-01-01', '2016-12-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (41, 3, '2008-08-01', '2009-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (27, 5, '2000-01-01', '2016-12-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (42, 3, '2009-08-01', '2010-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (43, 3, '2010-08-01', '2011-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (44, 3, '2011-08-01', '2012-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (45, 3, '2012-08-01', '2013-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (46, 3, '2013-08-01', '2014-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (47, 3, '2014-08-01', '2015-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (48, 3, '2015-08-01', '2016-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (49, 3, '2016-08-01', '2017-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (50, 3, '2017-08-01', '2018-07-31');
+
+  /* PRODES PAMPA */
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (60, 4, '2000-01-01', '2016-12-31');
+
+  /* PRODES PANTANAL */
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (70, 5, '2000-01-01', '2016-12-31');
 
   /* insert loi */
 
