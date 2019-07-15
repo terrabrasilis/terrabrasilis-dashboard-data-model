@@ -34,7 +34,7 @@ for ((i=0; i<$length; ++i));
 do
 
     TB_EXISTS="SELECT 'YES' WHERE (SELECT EXISTS ( SELECT 1 FROM information_schema.tables WHERE table_schema = 'private' AND table_name = 'prodes_cerrado_2000_2018_full_d_${years[$i]}_subdivided' ));"
-    HAS_TABLE=($(psql -d $database -U $user -h $host -t -c "$TB_EXISTS"))
+    HAS_TABLE=($(psql -p $port -d $database -U $user -h $host -t -c "$TB_EXISTS"))
     # If table no exists, continue to next.
     if [[ "$HAS_TABLE" = "YES" ]]; then
 
