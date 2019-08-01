@@ -122,6 +122,8 @@
 
   /* PRODES AMAZON */
 
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (20, 2, '2007-08-01', '2008-07-31');
+
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (21, 2, '2008-08-01', '2009-07-31');
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (22, 2, '2009-08-01', '2010-07-31');
@@ -143,6 +145,7 @@
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (30, 2, '2017-08-01', '2018-07-31');
 
   /* PRODES LEGAL AMAZON */
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (40, 3, '2007-08-01', '2008-07-31');
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (41, 3, '2008-08-01', '2009-07-31');
 
