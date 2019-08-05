@@ -48,10 +48,10 @@ export PGPASSWORD=$password
 # Start configurations
 # -------------------------------------------------
 # Use YES to enable or another word to NO
-MODEL="NO"
+MODEL="YES"
 DATA="YES"
 METADATA="YES"
-FEATURES="YES"
+FEATURES="NO"
 # -------------------------------------------------
 # Example:
 #
@@ -68,9 +68,9 @@ FEATURES="YES"
 #
 # -------------------------------------------------
 # Configure what data you want processing. Only if DATA parameter is equal YES.
-# Currently the complete list are: "amazon, cerrado, legal-amazon, pampa, pantanal"
+# Currently the complete list are: "amazon, cerrado, legal_amazon, pampa, pantanal"
 # -------------------------------------------------
-processing_filter="pampa, pantanal"
+processing_filter="amazon, cerrado, legal_amazon, pampa, pantanal"
 # -------------------------------------------------
 # End configurations
 # -------------------------------------------------
@@ -98,4 +98,5 @@ if [[ "$FEATURES" = "YES" ]]; then
     # All database model should be ready and populated with the metadata and data.
     cd features
     ./run_all.sh $user $password $host $port $database "$processing_filter"
+    #../exec_query.sh $user $host $port $database "UPDATE features f SET area_km2 = ST_Area(ST_Transform(f.geom, 4326)::geography)/1000000;"
 fi
