@@ -50,7 +50,7 @@ export PGPASSWORD=$password
 # Use YES to enable or another word to NO
 MODEL="YES"
 DATA="YES"
-METADATA="YES"
+METADATA="NO"
 FEATURES="NO"
 # -------------------------------------------------
 # Example:
@@ -90,7 +90,8 @@ if [[ "$METADATA" = "YES" ]]; then
     # metadata insert. Insert all metadata, no matter what in processing_filter.
     # Generally used together the MODEL option.
     ./populate-metadata.sh $user $password $host $port $database
-    ./populate-loinames.sh $user $password $host $port $database "$processing_filter"
+    #./populate-loinames.sh $user $password $host $port $database "$processing_filter"
+    ./populate-loinames.sh $user $password $host $port $database
 fi
 
 if [[ "$FEATURES" = "YES" ]]; then
