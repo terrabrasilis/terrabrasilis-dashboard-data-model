@@ -7,7 +7,7 @@ Query="$5"
 PG_CON="-d $database -U $user -h $host -p $port"
 
 # Used to provide the collected time by psql to each query.
-echo "\timing" > ~/.psqlrc
+# echo "\timing" > ~/.psqlrc
 
 psql $PG_CON << EOF
 $Query

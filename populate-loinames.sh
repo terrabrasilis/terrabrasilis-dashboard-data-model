@@ -8,20 +8,22 @@ password="$2"
 host="$3"
 port="$4"
 database="$5"
-processing_filter="$6"
+#processing_filter="$6"
 
 PG_CON="-d $database -U $user -h $host -p $port"
 BASE_PATH=`pwd`
 
-IFS=', ' read -r -a filter <<< "$processing_filter"
+#IFS=', ' read -r -a filter <<< "$processing_filter"
 
 cd local-of-interest-processing/
 
 for d in */ ; do
 
-    dtest="${d///}"
-
-    if [[ " ${filter[@]} " =~ " ${dtest} " ]]; then
+    #dtest="${d///}"
+    #echo " ${dtest} "
+    #echo " ${filter[@]} "; read input
+    
+    #if [[ " ${filter[@]} " =~ " ${dtest} " ]]; then
     
         cd $d
 
@@ -55,7 +57,6 @@ for d in */ ; do
                         INSERT INTO public.loinames (name, geom)
                         SELECT name, geom
                         FROM private."${biome}"_"${loi}"
-                        WHERE name not in (SELECT name FROM public.loinames)
                         RETURNING gid
                         )
 
@@ -74,8 +75,8 @@ for d in */ ; do
         done
 
         cd ../
-    else
-        echo "abort $d"
-    fi
+    #else
+    #    echo "abort $d"
+    #fi
 done
 

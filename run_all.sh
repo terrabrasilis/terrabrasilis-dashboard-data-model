@@ -48,9 +48,9 @@ export PGPASSWORD=$password
 # Start configurations
 # -------------------------------------------------
 # Use YES to enable or another word to NO
-MODEL="NO"
-DATA="NO"
-METADATA="YES"
+MODEL="YES"
+DATA="YES"
+METADATA="NO"
 FEATURES="NO"
 # -------------------------------------------------
 # Example:
@@ -68,7 +68,7 @@ FEATURES="NO"
 #
 # -------------------------------------------------
 # Configure what data you want processing. Only if DATA parameter is equal YES.
-# Currently the complete list are: "amazon, cerrado, legal-amazon, pampa, pantanal"
+# Currently the complete list are: "amazon, cerrado, legal_amazon, pampa, pantanal"
 # -------------------------------------------------
 processing_filter="amazon, cerrado, legal_amazon, pampa, pantanal"
 # -------------------------------------------------
@@ -90,7 +90,8 @@ if [[ "$METADATA" = "YES" ]]; then
     # metadata insert. Insert all metadata, no matter what in processing_filter.
     # Generally used together the MODEL option.
     ./populate-metadata.sh $user $password $host $port $database
-    ./populate-loinames.sh $user $password $host $port $database "$processing_filter"
+    #./populate-loinames.sh $user $password $host $port $database "$processing_filter"
+    ./populate-loinames.sh $user $password $host $port $database
 fi
 
 if [[ "$FEATURES" = "YES" ]]; then
@@ -98,4 +99,5 @@ if [[ "$FEATURES" = "YES" ]]; then
     # All database model should be ready and populated with the metadata and data.
     cd features
     ./run_all.sh $user $password $host $port $database "$processing_filter"
+    #../exec_query.sh $user $host $port $database "UPDATE features f SET area_km2 = ST_Area(ST_Transform(f.geom, 4326)::geography)/1000000;"
 fi

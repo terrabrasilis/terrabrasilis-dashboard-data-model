@@ -42,7 +42,7 @@ for d in */ ; do
             DROP_OLD="DROP TABLE IF EXISTS private."$name"_"$loi";"
             psql $PG_CON -c "$DROP_OLD"
             
-            time shp2pgsql -I -s 4674 -W "UTF-8" $shapefile private.$name"_"${loi} --quiet | psql $PG_CON -q
+            shp2pgsql -I -s 4674 -W "UTF-8" $shapefile private.$name"_"${loi} --quiet | psql $PG_CON -q
 
             Query="update private."$name"_"${loi}" set geom = st_multi(st_collectionextract(st_makevalid(geom),3)) where st_isvalid(geom) = false;
 
