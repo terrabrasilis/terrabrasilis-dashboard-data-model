@@ -44,7 +44,7 @@ for d in */ ; do
             DROP_OLD="DROP TABLE IF EXISTS private."$data"_subdivided CASCADE;"
             psql $PG_CON -c "$DROP_OLD"
 
-            time shp2pgsql -I -s 4674 $shapefile private.$data | psql $PG_CON -q
+            shp2pgsql -I -s 4674 $shapefile private.$data | psql $PG_CON -q
 
             Query="update private."$data" set geom = st_multi(st_collectionextract(st_makevalid(geom),3)) where st_isvalid(geom) = false;
 
