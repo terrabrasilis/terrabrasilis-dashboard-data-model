@@ -1,0 +1,13 @@
+/********************************************** APP IDENTIFIER DATA **********************************************/
+
+/**** GET ****/
+
+curl -i -X GET http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/apps/identifier -H "Content-Type: application/json"
+
+/**** POST ****/
+
+curl -X POST -d '[{"identifier": "dashboard_prodes_amazon"}, {"identifier": "dashboard_prodes_cerrado"}, {"identifier": "dashboard_deter_amazon"}, {"identifier": "dashboard_deter_cerrado"}]' http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/apps/identifier -H "Content-Type: application/json"
+
+/**** DELETE ****/
+
+curl -i -X DELETE http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/apps/identifier -H "Content-Type: application/json"

@@ -1,0 +1,58 @@
+/********************************************** APP IDENTIFIER DATA **********************************************/
+
+/**** GET ****/
+
+curl -i -X GET http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/bioma -H "Content-Type: application/json"
+
+curl -i -X GET http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/mun_cerrado -H "Content-Type: application/json"
+
+curl -i -X GET http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/uf_cerrado -H "Content-Type: application/json"
+
+curl -i -X GET http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/us_states -H "Content-Type: application/json"
+
+curl -i -X GET http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/china_data -H "Content-Type: application/json"
+
+curl -i -X GET http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/china_provinces_en -H "Content-Type: application/json"
+
+curl -i -X GET http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/us_states -H "Content-Type: application/json"
+
+curl -i -X GET http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/donations_usa10000 -H "Content-Type: application/json"
+
+/**** POST ****/
+
+curl -X POST -d @bioma.json http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/bioma -H "Content-Type: application/json"
+
+curl -X POST -d @mun_cerrado.json http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/mun_cerrado -H "Content-Type: application/json"
+
+curl -X POST -d @uf_cerrado.json http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/uf_cerrado -H "Content-Type: application/json"
+
+curl -X POST -d @uf_cerrado_simplified.json http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/uf_cerrado_simplified -H "Content-Type: application/json"
+
+curl -X POST -d @us_states.json http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/us_states -H "Content-Type: application/json"
+
+curl -X POST -d @china_data.json http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/china_data -H "Content-Type: application/json"
+
+curl -X POST -d @china_provinces_en.json http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/china_provinces_en -H "Content-Type: application/json"
+
+curl -X POST -d @us_states.json http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/us_states -H "Content-Type: application/json"
+
+curl -X POST -d @donations_usa10000.json http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/donations_usa10000 -H "Content-Type: application/json"
+
+
+/**** DELETE ****/
+
+curl -i -X DELETE http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/bioma -H "Content-Type: application/json"
+
+curl -i -X DELETE http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/mun_cerrado -H "Content-Type: application/json"
+
+curl -i -X DELETE http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/uf_cerrado -H "Content-Type: application/json"
+
+curl -i -X DELETE http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/us_states -H "Content-Type: application/json"
+
+curl -i -X DELETE http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/china_data -H "Content-Type: application/json"
+
+curl -i -X DELETE http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/china_provinces_en -H "Content-Type: application/json"
+
+curl -i -X DELETE http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/us_states -H "Content-Type: application/json"
+
+curl -i -X DELETE http://terrabrasilis2.dpi.inpe.br/dashboard/api/v1/redis-cli/config/donations_usa10000 -H "Content-Type: application/json"

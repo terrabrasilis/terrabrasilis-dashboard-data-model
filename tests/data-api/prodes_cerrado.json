@@ -1,0 +1,255 @@
+{
+        "data": "prodes cerrado",
+        "classes": [
+            {
+                "name": "deforestation",
+                "periods": [
+                    {
+                        "start": "1988-08-01",
+                        "end": "2000-07-31",
+                        "loi": [
+                            {
+                                "type": "UF",
+                                "values": [
+                                    {
+                                        "loiname": "Acre",
+                                        "area": 10
+                                    },
+                                    {
+                                        "loiname": "Alagoas",
+                                        "area": 20
+                                    },
+                                    {
+                                        "loiname": "Bahia",
+                                        "area": 50
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MUN",
+                                "values": [
+                                    {
+                                        "loiname": "Santa Luizia",
+                                        "area": 1
+                                    },
+                                    {
+                                        "loiname": "Monte Castelo",
+                                        "area": 2
+                                    },
+                                    {
+                                        "loiname": "Santa Luzia",
+                                        "area": 5
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "start": "2000-08-01",
+                        "end": "2002-07-31",
+                        "loi": [
+                            {
+                                "type": "UF",
+                                "values": [
+                                    {
+                                        "loiname": "Acre",
+                                        "area": 20
+                                    },
+                                    {
+                                        "loiname": "Alagoas",
+                                        "area": 40
+                                    },
+                                    {
+                                        "loiname": "Bahia",
+                                        "area": 100
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MUN",
+                                "values": [
+                                    {
+                                        "loiname": "Santa Luizia",
+                                        "area": 2
+                                    },
+                                    {
+                                        "loiname": "Monte Castelo",
+                                        "area": 4
+                                    },
+                                    {
+                                        "loiname": "Santa Luzia",
+                                        "area": 10
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "start": "2002-08-01",
+                        "end": "2004-07-31",
+                        "loi": [
+                            {
+                                "type": "UF",
+                                "values": [
+                                    {
+                                        "loiname": "Acre",
+                                        "area": 5
+                                    },
+                                    {
+                                        "loiname": "Alagoas",
+                                        "area": 10
+                                    },
+                                    {
+                                        "loiname": "Bahia",
+                                        "area": 25
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MUN",
+                                "values": [
+                                    {
+                                        "loiname": "Santa Luizia",
+                                        "area": 0.5
+                                    },
+                                    {
+                                        "loiname": "Monte Castelo",
+                                        "area": 1
+                                    },
+                                    {
+                                        "loiname": "Santa Luzia",
+                                        "area": 2.5
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "pasture",
+                "periods": [
+                    {
+                        "start": "1988-08-01",
+                        "end": "2000-07-31",
+                        "loi": [
+                            {
+                                "type": "UF",
+                                "values": [
+                                    {
+                                        "loiname": "Acre",
+                                        "area": 10
+                                    },
+                                    {
+                                        "loiname": "Alagoas",
+                                        "area": 20
+                                    },
+                                    {
+                                        "loiname": "Bahia",
+                                        "area": 50
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MUN",
+                                "values": [
+                                    {
+                                        "loiname": "Santa Luizia",
+                                        "area": 1
+                                    },
+                                    {
+                                        "loiname": "Monte Castelo",
+                                        "area": 2
+                                    },
+                                    {
+                                        "loiname": "Santa Luzia",
+                                        "area": 5
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "start": "2000-08-01",
+                        "end": "2002-07-31",
+                        "loi": [
+                            {
+                                "type": "UF",
+                                "values": [
+                                    {
+                                        "loiname": "Acre",
+                                        "area": 20
+                                    },
+                                    {
+                                        "loiname": "Alagoas",
+                                        "area": 40
+                                    },
+                                    {
+                                        "loiname": "Bahia",
+                                        "area": 100
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MUN",
+                                "values": [
+                                    {
+                                        "loiname": "Santa Luizia",
+                                        "area": 2
+                                    },
+                                    {
+                                        "loiname": "Monte Castelo",
+                                        "area": 4
+                                    },
+                                    {
+                                        "loiname": "Santa Luzia",
+                                        "area": 10
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "start": "2002-08-01",
+                        "end": "2004-07-31",
+                        "loi": [
+                            {
+                                "type": "UF",
+                                "values": [
+                                    {
+                                        "loiname": "Acre",
+                                        "area": 5
+                                    },
+                                    {
+                                        "loiname": "Alagoas",
+                                        "area": 10
+                                    },
+                                    {
+                                        "loiname": "Bahia",
+                                        "area": 25
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MUN",
+                                "values": [
+                                    {
+                                        "loiname": "Santa Luizia",
+                                        "area": 0.5
+                                    },
+                                    {
+                                        "loiname": "Monte Castelo",
+                                        "area": 1
+                                    },
+                                    {
+                                        "loiname": "Santa Luzia",
+                                        "area": 2.5
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
