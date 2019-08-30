@@ -50,8 +50,8 @@ export PGPASSWORD=$password
 # Use YES to enable or another word to NO
 MODEL="YES"
 DATA="YES"
-METADATA="NO"
-FEATURES="NO"
+METADATA="YES"
+FEATURES="YES"
 # -------------------------------------------------
 # Example:
 #
