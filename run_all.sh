@@ -99,5 +99,6 @@ if [[ "$FEATURES" = "YES" ]]; then
     # All database model should be ready and populated with the metadata and data.
     cd features
     ./run_all.sh $user $password $host $port $database "$processing_filter"
-    #../exec_query.sh $user $host $port $database "UPDATE features f SET area_km2 = ST_Area(ST_Transform(f.geom, 4326)::geography)/1000000;"
+    cd ../
+    ./update_area.sh $user $password $host $port $database
 fi
