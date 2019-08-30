@@ -1,6 +1,10 @@
 pg_config.sh
 
 # ignore raw data directory
-raw-data-processing/*
+/raw-data-processing/cerrado/*.*
+/raw-data-processing/amazon/*.*
+/raw-data-processing/legal_amazon/*.*
+/raw-data-processing/pampa/*.*
+/raw-data-processing/pantanal/*.*
 
 *.log
