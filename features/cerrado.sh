@@ -23,9 +23,9 @@ echo "Defining loi"
 loi=$1
 
 echo "Defining years"
-years=("2000" "2002" "2004" "2006" "2008" "2010" "2012" "2013" "2014" "2015" "2016" "2017" "2018")
+years=("2002" "2004" "2006" "2008" "2010" "2012" "2013" "2014" "2015" "2016" "2017" "2018")
 
-length=13
+length=12
 
 echo "Processing for loi_id=$loi" >> output_cerrado.log
 echo "==========================" >> output_cerrado.log
