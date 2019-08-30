@@ -18,6 +18,10 @@ IFS=', ' read -r -a filter <<< "$processing_filter"
 
 cd raw-data-processing/
 
+# create extensions
+SQL_CREATE_EXT="CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";"
+psql $PG_CON -c "$SQL_CREATE_EXT"
+
 for d in */ ; do
     
     dtest="${d///}"
@@ -50,7 +54,7 @@ for d in */ ; do
 
             update private."$data" set geom = ST_SetSRID(geom, 4674) where ST_SRID(geom) <> 4674;
             
-            CREATE TABLE private."$data"_subdivided AS SELECT gid || '_' || random() as fid, st_subdivide(geom) as geom FROM private."$data";
+            CREATE TABLE private."$data"_subdivided AS SELECT gid || '_' || uuid_generate_v1() as fid, st_subdivide(geom) as geom FROM private."$data";
 
             CREATE INDEX "$data"_subdivided_geom_idx ON private."$data"_subdivided USING GIST (geom);"
 
