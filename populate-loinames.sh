@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Populating metadata..."
+echo "Populating loinames..."
 
 # pass username, password, host and database name as parameter
 user="$1"
@@ -8,22 +8,22 @@ password="$2"
 host="$3"
 port="$4"
 database="$5"
-#processing_filter="$6"
+processing_filter="$6"
 
 PG_CON="-d $database -U $user -h $host -p $port"
 BASE_PATH=`pwd`
 
-#IFS=', ' read -r -a filter <<< "$processing_filter"
+IFS=', ' read -r -a filter <<< "$processing_filter"
 
 cd local-of-interest-processing/
 
 for d in */ ; do
 
-    #dtest="${d///}"
+    dtest="${d///}"
     #echo " ${dtest} "
     #echo " ${filter[@]} "; read input
     
-    #if [[ " ${filter[@]} " =~ " ${dtest} " ]]; then
+    if [[ " ${filter[@]} " =~ " ${dtest} " ]]; then
     
         cd $d
 
@@ -75,8 +75,8 @@ for d in */ ; do
         done
 
         cd ../
-    #else
-    #    echo "abort $d"
-    #fi
+    else
+        echo "abort $d"
+    fi
 done
 

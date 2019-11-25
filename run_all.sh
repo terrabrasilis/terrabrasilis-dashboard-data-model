@@ -48,19 +48,21 @@ export PGPASSWORD=$password
 # Start configurations
 # -------------------------------------------------
 # Use YES to enable or another word to NO
-MODEL="YES"
+MODEL="NO"
+LOIS="NO"
 DATA="YES"
-METADATA="YES"
+METADATA="NO"
 FEATURES="YES"
 # -------------------------------------------------
 # Example:
 #
 # For processing new data without remove the existing data
-# use the DATA, METADATA and FEATURES options.
+# use the DATA and FEATURES options.
 #
 # MODEL="NO"
+# LOIS="NO"
 # DATA="YES"
-# METADATA="YES"
+# METADATA="NO"
 # FEATURES="YES"
 #
 # And keep in the below "processing_filter" parameter only
@@ -70,7 +72,7 @@ FEATURES="YES"
 # Configure what data you want processing. Only if DATA parameter is equal YES.
 # Currently the complete list are: "amazon, cerrado, legal_amazon, pampa, pantanal"
 # -------------------------------------------------
-processing_filter="amazon, cerrado, legal_amazon, pampa, pantanal"
+processing_filter="amazon, legal_amazon"
 # -------------------------------------------------
 # End configurations
 # -------------------------------------------------
@@ -80,9 +82,13 @@ if [[ "$MODEL" = "YES" ]]; then
     ./initialize-public-data-model-schema.sh $user $password $host $port $database
 fi
 
+if [[ "$LOIS" = "YES" ]]; then
+    # LOIS data insert. Read all shapefiles and insert then into database.
+    ./insert-local-of-interests.sh $user $password $host $port $database "$processing_filter"
+fi
+
 if [[ "$DATA" = "YES" ]]; then
     # data insert. Read all shapefiles and insert then into database.
-    ./insert-local-of-interests.sh $user $password $host $port $database "$processing_filter"
     ./insert-raw-data.sh $user $password $host $port $database "$processing_filter"
 fi
 
@@ -90,8 +96,7 @@ if [[ "$METADATA" = "YES" ]]; then
     # metadata insert. Insert all metadata, no matter what in processing_filter.
     # Generally used together the MODEL option.
     ./populate-metadata.sh $user $password $host $port $database
-    #./populate-loinames.sh $user $password $host $port $database "$processing_filter"
-    ./populate-loinames.sh $user $password $host $port $database
+    ./populate-loinames.sh $user $password $host $port $database "$processing_filter"
 fi
 
 if [[ "$FEATURES" = "YES" ]]; then
