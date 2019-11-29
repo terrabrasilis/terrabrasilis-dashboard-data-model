@@ -173,11 +173,21 @@
 
   /* PRODES PAMPA */
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (60, 4, '2000-01-01', '2016-12-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (60, 4, '2000-01-01', '2016-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (61, 4, '2016-08-01', '2017-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (62, 4, '2017-08-01', '2018-07-31');
 
   /* PRODES PANTANAL */
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (70, 5, '2000-01-01', '2016-12-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (70, 5, '2000-01-01', '2016-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (71, 5, '2016-08-01', '2017-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (72, 5, '2017-08-01', '2018-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (73, 5, '2018-08-01', '2019-07-31');
 
   /* insert loi */
 

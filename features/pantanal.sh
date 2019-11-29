@@ -8,10 +8,10 @@ port="$4"
 database="$5"
 
 echo "Defining start date"
-start_date=("2000-01-01")
+start_date=("2000-01-01" "2017-08-01" "2018-08-01")
 
 echo "Defining end date"
-end_date=("2016-12-31")
+end_date=("2016-07-31" "2018-07-31" "2019-07-31")
 
 echo "Defining data name"
 data="PRODES PANTANAL"
@@ -23,9 +23,9 @@ echo "Defining loi"
 loi=$1
 
 echo "Defining years"
-years=("2016")
+years=("2016" "2018" "2019")
 
-length=1
+length=3
 
 echo "Processing for loi_id=$loi" >> output_pantanal.log
 echo "==========================" >> output_pantanal.log

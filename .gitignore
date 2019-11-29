@@ -6,6 +6,7 @@ pg_config.sh
 /raw-data-processing/*/*.dbf
 /raw-data-processing/*/*.cpg
 /raw-data-processing/*/*.prj
+/raw-data-processing/*/*.qpj
 #/raw-data-processing/cerrado/*.*
 #/raw-data-processing/amazon/*.*
 #/raw-data-processing/legal_amazon/*.*
