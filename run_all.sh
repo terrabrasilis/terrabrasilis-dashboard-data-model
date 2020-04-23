@@ -72,7 +72,7 @@ FEATURES="YES"
 # Configure what data you want processing. Only if DATA parameter is equal YES.
 # Currently the complete list are: "amazon, cerrado, legal_amazon, pampa, pantanal"
 # -------------------------------------------------
-processing_filter="amazon, legal_amazon, cerrado, pampa, pantanal"
+processing_filter="amazon, legal_amazon"
 # -------------------------------------------------
 # End configurations
 # -------------------------------------------------

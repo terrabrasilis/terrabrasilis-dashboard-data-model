@@ -19,3 +19,5 @@ See in the metadata.sql file to learn how to proceed with ids, example:
 5 - Check the database configurations into pg_config.sh to ensure the connection string is ok;
 
 OK, now you are ready to run the main script run_all.sh to proccessing the new data.
+
+6 - After all the data has been imported into the database and the intersections with the LOIs have been processed, the next step is to rebuild the REDIS database using the redis-feeder; therefore, access the terrabrasilis-dashboard-api project and read the instructions for doing so.
