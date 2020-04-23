@@ -46,9 +46,13 @@
 
   INSERT INTO public.data(id, name, description) VALUES (3, 'PRODES LEGAL AMAZON', '1 year temporal resolution');
 
-  INSERT INTO public.data(id, name, description) VALUES (4, 'PRODES PAMPA', 'mask of aggregated data');
+  INSERT INTO public.data(id, name, description) VALUES (4, 'PRODES PAMPA', '1 year temporal resolution');
 
-  INSERT INTO public.data(id, name, description) VALUES (5, 'PRODES PANTANAL', 'mask of aggregated data');
+  INSERT INTO public.data(id, name, description) VALUES (5, 'PRODES PANTANAL', '1 year temporal resolution');
+
+  INSERT INTO public.data(id, name, description) VALUES (6, 'PRODES CAATINGA', '1 year temporal resolution');
+
+  INSERT INTO public.data(id, name, description) VALUES (7, 'PRODES MATA ATLANTICA', '1 year temporal resolution');
 
   /* insert data_class */
 
@@ -119,6 +123,8 @@
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (12, 1, '2016-08-01', '2017-07-31');
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (13, 1, '2017-08-01', '2018-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (14, 1, '2018-08-01', '2019-07-31');
 
   /* PRODES AMAZON */
 
