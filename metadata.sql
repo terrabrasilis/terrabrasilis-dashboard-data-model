@@ -154,7 +154,7 @@
 
   -- new years here ...
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (39, 2, '1988-08-01', '2007-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (39, 2, '1987-08-01', '2007-07-31');
 
   /* PRODES LEGAL AMAZON */
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (40, 3, '2007-08-01', '2008-07-31');
@@ -183,7 +183,7 @@
 
   -- new years here ...
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (59, 3, '1988-08-01', '2007-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (59, 3, '1987-08-01', '2007-07-31');
 
   /* PRODES PAMPA */
 
