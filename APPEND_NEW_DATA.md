@@ -1,6 +1,9 @@
 ## Instruction to add new data into database that has data
 
-ATENTION: Make one backup of the database before continue.
+ATTENTION:
+
+ > Make one backup of the database before continue.
+ > If the database has data that you want to process again, you need remove old data from database using SQL manually. (Look the clean-existing-data.sql to get an example.)
 
 1 - Put your new shapefiles into raw-data-processing/dir/ directory following the existing structure;
 
