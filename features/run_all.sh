@@ -9,7 +9,7 @@ export PGPASSWORD=$password
 processing_filter="$6"
 IFS=', ' read -r -a filter <<< "$processing_filter"
 
-# without pathrow
+# Meaning of lois IDs(1=uf, 2=mun, 3=conservation units, 4=indigenous areas) *without pathrow
 lois=(1 2 3 4)
 
 for data_features in "${filter[@]}"; do
