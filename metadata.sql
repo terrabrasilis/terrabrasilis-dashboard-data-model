@@ -126,6 +126,8 @@
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (14, 1, '2018-08-01', '2019-07-31');
 
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (15, 1, '2019-08-01', '2020-07-31');
+
   /* PRODES AMAZON */
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (20, 2, '2007-08-01', '2008-07-31');
