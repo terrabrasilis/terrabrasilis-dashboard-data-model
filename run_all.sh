@@ -74,6 +74,13 @@ FEATURES="YES"
 # -------------------------------------------------
 processing_filter="amazon, legal_amazon"
 # -------------------------------------------------
+# Configure what date you want processing. Only if DATA parameter is equal YES.
+# Common values are the one-year or multi-year list: ("2019" "2020" "2021")
+# Used to import new raw data and in intersection between features and LOIs.
+# Can be overwritten in a specific script.
+# -------------------------------------------------
+years=("2021")
+# -------------------------------------------------
 # End configurations
 # -------------------------------------------------
 if [[ "$MODEL" = "YES" ]]; then
@@ -89,7 +96,7 @@ fi
 
 if [[ "$DATA" = "YES" ]]; then
     # data insert. Read all shapefiles and insert then into database.
-    ./insert-raw-data.sh $user $password $host $port $database "$processing_filter"
+    . ./insert-raw-data.sh
 fi
 
 if [[ "$METADATA" = "YES" ]]; then
@@ -102,8 +109,11 @@ fi
 if [[ "$FEATURES" = "YES" ]]; then
     # features processing
     # All database model should be ready and populated with the metadata and data.
-    cd features
-    ./run_all.sh $user $password $host $port $database "$processing_filter"
+    cd features/
+    . ./run_all.sh
     cd ../
-    ./update_area.sh $user $password $host $port $database
+    . ./update_area.sh
 fi
+
+# print the total execution time
+. ./runtime.sh

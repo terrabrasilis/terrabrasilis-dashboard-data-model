@@ -156,6 +156,8 @@
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (32, 2, '2019-08-01', '2020-07-31');
 
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (33, 2, '2020-08-01', '2021-07-31');
+
   -- new years here ...
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (39, 2, '1987-08-01', '2007-07-31');
@@ -186,6 +188,8 @@
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (51, 3, '2018-08-01', '2019-07-31');
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (52, 3, '2019-08-01', '2020-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (53, 3, '2020-08-01', '2021-07-31');
 
   -- new years here ...
 
