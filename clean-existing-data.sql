@@ -19,3 +19,5 @@ AND c.id=1 -- Filter by classes, looking into public.class table. (only deforest
 AND p.end_date='2019-07-31' -- Filter by specific date, looking into public.period table.
 );
 
+-- to clear the data simply using created_at as a reference, use the SQL below, setting the desired date.
+DELETE FROM public.features WHERE created_at::date>='2021-10-20'::date;
