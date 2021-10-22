@@ -77,9 +77,9 @@ processing_filter="amazon, legal_amazon"
 # Configure what date you want processing. Only if DATA parameter is equal YES.
 # Common values are the one-year or multi-year list: ("2019" "2020" "2021")
 # Used to import new raw data and in intersection between features and LOIs.
-# Can be overwritten in a specific script.
+# WARNING: Can be overwritten in a specific script, see features directory
 # -------------------------------------------------
-years=("2021")
+years=("2018")
 # -------------------------------------------------
 # End configurations
 # -------------------------------------------------
