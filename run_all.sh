@@ -50,8 +50,8 @@ export PGPASSWORD=$password
 # Use YES to enable or another word to NO
 MODEL="NO"
 LOIS="NO"
-DATA="YES"
-METADATA="NO"
+DATA="NO"
+METADATA="YES"
 FEATURES="YES"
 # -------------------------------------------------
 # Example:
@@ -72,14 +72,14 @@ FEATURES="YES"
 # Configure what data you want processing. Only if DATA parameter is equal YES.
 # Currently the complete list are: "amazon, cerrado, legal_amazon, pampa, pantanal"
 # -------------------------------------------------
-processing_filter="amazon, legal_amazon"
+processing_filter="cerrado"
 # -------------------------------------------------
 # Configure what date you want processing. Only if DATA parameter is equal YES.
 # Common values are the one-year or multi-year list: ("2019" "2020" "2021")
 # Used to import new raw data and in intersection between features and LOIs.
 # WARNING: Can be overwritten in a specific script, see features directory
 # -------------------------------------------------
-years=("2018")
+years=("2002" "2004" "2006" "2008" "2010" "2012" "2013" "2014" "2015" "2016" "2017" "2018" "2019" "2020" "2021")
 # -------------------------------------------------
 # End configurations
 # -------------------------------------------------
@@ -102,7 +102,7 @@ fi
 if [[ "$METADATA" = "YES" ]]; then
     # metadata insert. Insert all metadata, no matter what in processing_filter.
     # Generally used together the MODEL option.
-    ./populate-metadata.sh $user $password $host $port $database
+    #./populate-metadata.sh $user $password $host $port $database
     ./populate-loinames.sh $user $password $host $port $database "$processing_filter"
 fi
 

@@ -52,10 +52,15 @@ for d in */ ; do
                 loi_id=($(psql $PG_CON -t -c "$SQL_LOI"))
 
                 echo "|$loi_id|"
+                
+                COLS="name, geom"
+                if [[ "$loi_id" = "2" ]]; then
+                    COLS="name, geom, codibge"
+                fi
 
                 Query="WITH rows AS (
-                        INSERT INTO public.loinames (name, geom)
-                        SELECT name, geom
+                        INSERT INTO public.loinames (${COLS})
+                        SELECT ${COLS}
                         FROM private."${biome}"_"${loi}"
                         RETURNING gid
                         )
