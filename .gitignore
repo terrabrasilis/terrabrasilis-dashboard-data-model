@@ -1,5 +1,5 @@
 pg_config.sh
-
+tools/pgconfig
 # ignore raw data files
 /raw-data-processing/*/*.shp
 /raw-data-processing/*/*.shx
