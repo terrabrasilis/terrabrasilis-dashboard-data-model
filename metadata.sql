@@ -98,7 +98,7 @@
 
   /* PRODES CERRADO */
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (1, 1, '1988-08-01', '2000-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (1, 1, '1987-08-01', '2000-07-31');
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (2, 1, '2000-08-01', '2002-07-31');
 
@@ -127,6 +127,8 @@
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (14, 1, '2018-08-01', '2019-07-31');
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (15, 1, '2019-08-01', '2020-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (16, 1, '2020-08-01', '2021-07-31');
 
   /* PRODES AMAZON */
 
