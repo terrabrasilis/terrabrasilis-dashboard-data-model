@@ -17,7 +17,7 @@ ATTENTION:
 See in the metadata.sql file to learn how to proceed with ids, example:
  > INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (31, 2, '2018-08-01', '2019-07-31');
 
-4 - Edit the scripts inside features directory, related with your target data type, changing the parameters of start_date, end_date, years and length;
+4 - Edit the scripts inside features directory, related with your target data type, changing the parameters of start_date, end_date and years;
 
 5 - Check the database configurations into pg_config.sh to ensure the connection string is ok;
 
