@@ -22,10 +22,16 @@ OUTPUT_DATA="../raw-data-processing/${TARGET}"
 # creating output directory to put files, if do not exists
 mkdir -p "$OUTPUT_DATA"
 
-YEARS=("d2000" "d2002" "d2004" "d2006" "d2008" "d2010" "d2012" "d2013" "d2014" "d2015" "d2016" "d2017" "d2018" "d2019" "d2020" "d2021")
+# if you want a mask, enable this lines
+YEARS_MASK="1500_2007"
+SHP_NAME="${TARGET}_${YEARS_MASK}"
+pgsql2shp -f "$OUTPUT_DATA/$SHP_NAME" -h $host -p $port -u $user $database "SELECT uid as gid, geom FROM $schema.accumulated_deforestation_2007"
+
+# for export increments for each year
+YEARS=("2008" "2009" "2010" "2011" "2012" "2013" "2014" "2015" "2016" "2017" "2018" "2019" "2020" "2021")
 
 for CLS in ${YEARS[@]}
 do
     SHP_NAME="${TARGET}_${CLS}"
-    pgsql2shp -f "$OUTPUT_DATA/$SHP_NAME" -h $host -p $port -u $user $database "SELECT id as gid, geom FROM $schema.yearly_deforestation WHERE class_name='$CLS'"
+    pgsql2shp -f "$OUTPUT_DATA/$SHP_NAME" -h $host -p $port -u $user $database "SELECT uid as gid, geom FROM $schema.yearly_deforestation WHERE class_name='d${CLS}'"
 done

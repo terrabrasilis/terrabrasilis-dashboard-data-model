@@ -3,14 +3,6 @@
 # pass username, password, host and database name as parameter
 echo "Inserting raw data..."
 
-# user="$1"
-# password="$2"
-# host="$3"
-# port="$4"
-# database="$5"
-# processing_filter="$6"
-
-# export PGPASSWORD=$password
 PG_CON="-d $database -U $user -h $host -p $port"
 BASE_PATH=`pwd`
 

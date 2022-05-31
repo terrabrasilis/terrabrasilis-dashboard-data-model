@@ -55,6 +55,7 @@ for d in */ ; do
                 
                 COLS="name, geom"
                 if [[ "$loi_id" = "2" ]]; then
+                    # we expect the loi id to be equal to 2 for municipality
                     COLS="name, geom, codibge"
                 fi
 
