@@ -42,7 +42,7 @@ for d in */ ; do
                 
                 echo "Acquiring data...."
 
-                SQL_DATA="SELECT id FROM public.data WHERE name ILIKE '%"$biome"%';"
+                SQL_DATA="SELECT id FROM public.data WHERE name ILIKE 'PRODES "$biome"%';"
                 data_id=($(psql $PG_CON -t -c "$SQL_DATA"))
 
                 echo "|$data_id|"
