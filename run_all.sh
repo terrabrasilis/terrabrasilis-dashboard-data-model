@@ -48,7 +48,7 @@ export PGPASSWORD=$password
 # Start configurations
 # -------------------------------------------------
 # Use YES to enable or another word to NO
-MODEL="NO"
+MODEL="YES"
 LOIS="YES"
 DATA="YES"
 METADATA="YES"
@@ -70,17 +70,14 @@ FEATURES="YES"
 #
 # -------------------------------------------------
 # Configure what data you want processing. Only if DATA parameter is equal YES.
-# Currently the complete list are: "amazon, cerrado, legal_amazon, pampa, pantanal"
+# Currently the complete list are: "pampa, caatinga, mata_atlantica, pantanal, amazon, cerrado, legal_amazon"
 # -------------------------------------------------
-processing_filter="amazon, legal_amazon"
+processing_filter="pampa, caatinga, mata_atlantica"
 # -------------------------------------------------
 # Configure what date you want processing. Only if DATA parameter is equal YES.
 # Common values are the one-year or multi-year list: ("2019" "2020" "2021")
 # Used to import new raw data and in intersection between features and LOIs.
-# WARNING: Can be overwritten in a specific script, see features directory
-# -------------------------------------------------
-years=("1500_2007" "2008" "2009" "2010" "2011" "2012" "2013" "2014" "2015" "2016" "2017" "2018" "2019" "2020" "2021")
-# -------------------------------------------------
+# Look for year list at ~/raw-data-processing/biome/biome_config.sh
 # End configurations
 # -------------------------------------------------
 if [[ "$MODEL" = "YES" ]]; then
@@ -102,7 +99,7 @@ fi
 if [[ "$METADATA" = "YES" ]]; then
     # metadata insert. Insert all metadata, no matter what in processing_filter.
     # Generally used together the MODEL option.
-    #./populate-metadata.sh $user $password $host $port $database
+    ./populate-metadata.sh $user $password $host $port $database
     ./populate-loinames.sh $user $password $host $port $database "$processing_filter"
 fi
 

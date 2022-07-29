@@ -10,10 +10,6 @@ IFS=', ' read -r -a filter <<< "$processing_filter"
 
 cd raw-data-processing/
 
-# create extensions
-SQL_CREATE_EXT="CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";"
-psql $PG_CON -c "$SQL_CREATE_EXT"
-
 for d in */ ; do
     
     dtest="${d///}"
@@ -25,6 +21,9 @@ for d in */ ; do
 
         name=${d%?}
         echo ------------------------------------- "$name"
+
+        # load the years list from specific data directory configuration
+        . ./${name}_config.sh
 
         length_years=${#years[@]}
 
@@ -48,11 +47,11 @@ for d in */ ; do
 
                 shp2pgsql -I -s 4674 $shapefile private.$data | psql $PG_CON -q
 
-                Query="update private."$data" set geom = st_multi(st_collectionextract(st_makevalid(geom),3)) where st_isvalid(geom) = false;
+                Query="UPDATE private."$data" SET geom = st_multi(st_collectionextract(st_makevalid(geom),3)) WHERE st_isvalid(geom) = false;
 
-                update private."$data" set geom = ST_SetSRID(geom, 4674) where ST_SRID(geom) <> 4674;
+                UPDATE private."$data" SET geom = ST_SetSRID(geom, 4674) WHERE ST_SRID(geom) <> 4674;
                 
-                CREATE TABLE private."$data"_subdivided AS SELECT gid || '_' || uuid_generate_v1() as fid, st_subdivide(geom) as geom FROM private."$data";
+                CREATE TABLE private."$data"_subdivided AS SELECT gid || '_' || gen_random_uuid() AS fid, st_subdivide(geom) AS geom FROM private."$data";
 
                 CREATE INDEX "$data"_subdivided_geom_idx ON private."$data"_subdivided USING GIST (geom);"
 

@@ -6,6 +6,24 @@ They also remove great efforts to acquire and recognize current available data. 
 
 **terrabrasilis-dashboard-data-model** is a set of scripts to create and populate the Dashboard data model () from TerraBrasilis. 
 
+## How to prepare LOIs data?
+
+Inside the "local-of-interest-processing/" directory, in each biome directory, putting the shape files of each LOI using the pattern.
+
+The file names are (minimal files for shapefile data):
+
+ - (municípios) mun.{shp,shx,dbf,prj}
+ - (estados) uf.{shp,shx,dbf,prj}
+ - (unidades de conservação) consunit.{shp,shx,dbf,prj}
+ - (terras indígenas) indi.{shp,shx,dbf,prj}
+
+The mandatory columns are:
+
+ - name (for all shapefiles)*
+ - codibge (only for municipalities)
+
+*The name for municipalities should formatted by concatenation: "name of municipality" + "_" + "name of state"
+
 ## Getting started
 
 Initialize private and public data model schema.

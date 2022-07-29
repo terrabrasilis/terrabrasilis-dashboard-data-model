@@ -44,9 +44,9 @@ for d in */ ; do
             
             shp2pgsql -I -s 4674 -W "UTF-8" $shapefile private.$name"_"${loi} --quiet | psql $PG_CON -q
 
-            Query="update private."$name"_"${loi}" set geom = st_multi(st_collectionextract(st_makevalid(geom),3)) where st_isvalid(geom) = false;
+            Query="UPDATE private."$name"_"${loi}" SET geom = st_multi(st_collectionextract(st_makevalid(geom),3)) WHERE st_isvalid(geom) = false;
 
-            update private."$name"_"${loi}" set geom = ST_SetSRID(geom, 4674)  where ST_SRID(geom) <> 4674;"
+            UPDATE private."$name"_"${loi}" SET geom = ST_SetSRID(geom, 4674) WHERE ST_SRID(geom) <> 4674;"
 
             RESPONSE_QUERY=$($BASE_PATH/exec_query.sh $user $host $port $database "$Query")
             echo "PSQL Return: $RESPONSE_QUERY"

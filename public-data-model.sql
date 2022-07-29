@@ -86,7 +86,8 @@ DROP TABLE IF EXISTS public.loinames CASCADE;
 CREATE TABLE public.loinames
 (
     name text,
-    description text
+    description text,
+    codibge integer
 );
 
 ALTER TABLE public.loinames ADD COLUMN gid SERIAL PRIMARY KEY;
