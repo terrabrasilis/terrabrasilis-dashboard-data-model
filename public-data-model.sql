@@ -148,7 +148,9 @@ CREATE INDEX features_id_data_class_FK_idx ON features (id_data_class);
 
 ALTER TABLE public.features ADD COLUMN area_km2 double precision DEFAULT NULL;
 
-CREATE SEQUENCE public.application_id_seq INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1;
+DROP SEQUENCE IF EXISTS public.application_id_seq;
+
+CREATE SEQUENCE IF NOT EXISTS public.application_id_seq INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1;
 
 ALTER SEQUENCE public.application_id_seq OWNER TO postgres;
 
