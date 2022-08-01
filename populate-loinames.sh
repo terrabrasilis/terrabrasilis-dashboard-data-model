@@ -54,14 +54,16 @@ for d in */ ; do
                 echo "|$loi_id|"
                 
                 COLS="name, geom"
+                COLSS="${COLS}"
                 if [[ "$loi_id" = "2" ]]; then
                     # we expect the loi id to be equal to 2 for municipality
                     COLS="name, geom, codibge"
+                    COLSS="name, geom, codibge::integer"
                 fi
 
                 Query="WITH rows AS (
                         INSERT INTO public.loinames (${COLS})
-                        SELECT ${COLS}
+                        SELECT ${COLSS}
                         FROM private."${biome}"_"${loi}"
                         RETURNING gid
                         )
