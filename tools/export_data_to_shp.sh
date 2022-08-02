@@ -4,10 +4,14 @@
 # Specific to PRODES CERRADO
 #
 # "cerrado" "amazon" "legal_amazon" "pantanal" "pampa" "mata_atlantica" "caatinga"
-TARGETS=("caatinga")
+TARGETS=("amazon" "legal_amazon")
 for TARGET in ${TARGETS[@]}
 do
     database="prodes_${TARGET}_nb"
+    if [[ "${TARGET}" = "amazon" || "${TARGET}" = "legal_amazon" ]];then
+        database="prodes_amazonia_nb"
+    fi
+
     source ./pgconfig
     export PGPASSWORD=$password
 

@@ -10,7 +10,7 @@ ATTENTION:
     - The name of shapefile must to following the pattern: prodes_<the biome name or legal amazon>_deforestation_d<year> (Ex.: prodes_amazon_deforestation_d2019)
     - If you want change this, edit the scripts into features directory.
 
-2 - Check the run_all.sh script setting to ensure the correct flow. Only enable the DATA="YES" and FEATURES="YES" otherwise the scripts will delete your data;
+2 - Check the "main.sh" script setting to ensure the correct flow. Only enable the DATA="YES" and FEATURES="YES" otherwise the scripts will delete your data;
 
 3 - If new data is related to new periods not yet defined in the period table, so, you must insert this periods before processing these data;
 

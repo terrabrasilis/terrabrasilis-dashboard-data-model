@@ -48,10 +48,10 @@ export PGPASSWORD=$password
 # Start configurations
 # -------------------------------------------------
 # Use YES to enable or another word to NO
-MODEL="YES"
+MODEL="NO"
+METADATA="NO"
 LOIS="YES"
 DATA="YES"
-METADATA="YES"
 FEATURES="YES"
 # -------------------------------------------------
 # Example:
@@ -60,9 +60,9 @@ FEATURES="YES"
 # use the DATA and FEATURES options.
 #
 # MODEL="NO"
+# METADATA="NO"
 # LOIS="NO"
 # DATA="YES"
-# METADATA="NO"
 # FEATURES="YES"
 #
 # And keep in the below "processing_filter" parameter only
@@ -72,7 +72,7 @@ FEATURES="YES"
 # Configure what data you want processing. Only if DATA parameter is equal YES.
 # Currently the complete list are: "pampa, caatinga, mata_atlantica, pantanal, amazon, cerrado, legal_amazon"
 # -------------------------------------------------
-processing_filter="pampa, caatinga, mata_atlantica"
+processing_filter="amazon, cerrado, legal_amazon"
 # -------------------------------------------------
 # Configure what date you want processing. Only if DATA parameter is equal YES.
 # Common values are the one-year or multi-year list: ("2019" "2020" "2021")
