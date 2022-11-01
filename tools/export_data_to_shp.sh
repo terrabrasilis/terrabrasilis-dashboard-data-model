@@ -1,10 +1,12 @@
 #!/bin/bash
 #
 # Used to prepare the shapefiles to input to the scripts of the Dashboard data model.
-# Specific to PRODES CERRADO
+#
+# uncomment the next line to delete all existing files exported before
+find ${PWD}/../raw-data-processing -regex ".*\.\(cpg\|shx\|shp\|dbf\|prj\)" -delete
 #
 # "cerrado" "amazon" "legal_amazon" "pantanal" "pampa" "mata_atlantica" "caatinga"
-TARGETS=("amazon" "legal_amazon")
+TARGETS=("cerrado" "amazon" "legal_amazon" "pantanal" "pampa" "mata_atlantica" "caatinga")
 for TARGET in ${TARGETS[@]}
 do
     database="prodes_${TARGET}_nb"
