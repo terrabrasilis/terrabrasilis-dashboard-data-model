@@ -48,9 +48,9 @@ export PGPASSWORD=$password
 # Start configurations
 # -------------------------------------------------
 # Use YES to enable or another word to NO
-MODEL="YES"
-METADATA="YES"
-LOIS="YES"
+MODEL="NO"
+METADATA="NO"
+LOIS="NO"
 DATA="YES"
 FEATURES="YES"
 # -------------------------------------------------
