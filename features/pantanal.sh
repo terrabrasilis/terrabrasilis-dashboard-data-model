@@ -7,17 +7,10 @@ echo "Defining class"
 class="deforestation"
 echo "Defining loi=${1}"
 loi=$1
+TARGET="pantanal"
 
-# to define, look the shapefile name into raw-data-processing/ directory (Ex.: prodes_pantanal_deforestation_d)
-raw_data_table_prefix="prodes_pantanal_deforestation_d"
+# compute years for target biome based in the year list at ../raw-data-processing/${TARGET}/${TARGET}_config.sh
+. ./compute_years.sh
 
-echo "Defining start date"
-start_date=("2000-01-01" "2017-08-01" "2018-08-01")
-
-echo "Defining end date"
-end_date=("2016-07-31" "2018-07-31" "2019-07-31")
-
-echo "Defining years"
-years=("2016" "2018" "2019")
-
+# insert intersection results into features table
 . ./query_by_year.sh

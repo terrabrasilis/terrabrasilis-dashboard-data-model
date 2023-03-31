@@ -69,12 +69,12 @@ FEATURES="YES"
 # the new data names.
 #
 # -------------------------------------------------
-# Configure what data you want processing. Only if DATA parameter is equal YES.
+# Configure what data you want processing. Used in scripts to LOIS, DATA and FEATURES.
 # Currently the complete list are: "pampa, caatinga, mata_atlantica, pantanal, amazon, cerrado, legal_amazon"
 # -------------------------------------------------
-processing_filter="pampa, caatinga, mata_atlantica, pantanal, amazon, cerrado, legal_amazon"
+processing_filter="pampa, caatinga, mata_atlantica, pantanal"
 # -------------------------------------------------
-# Configure what date you want processing. Only if DATA parameter is equal YES.
+# Configure what date you want processing.
 # Common values are the one-year or multi-year list: ("2019" "2020" "2021")
 # Used to import new raw data and in intersection between features and LOIs.
 # Look for year list at ~/raw-data-processing/biome/biome_config.sh
