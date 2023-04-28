@@ -59,6 +59,8 @@
 
   INSERT INTO public.data(id, name, description) VALUES (7, 'PRODES PANTANAL', '1 year temporal resolution');
 
+  INSERT INTO public.data(id, name, description) VALUES (8, 'PRODES AMAZON NF', 'year temporal resolution');
+
   /* insert data_class */
 
   INSERT INTO public.data_class(id, id_data, id_class) VALUES (1, 1, 1);
@@ -74,6 +76,8 @@
   INSERT INTO public.data_class(id, id_data, id_class) VALUES (6, 6, 1);
 
   INSERT INTO public.data_class(id, id_data, id_class) VALUES (7, 7, 1);
+
+  INSERT INTO public.data_class(id, id_data, id_class) VALUES (8, 8, 1);
 
   /* insert filter */
 
@@ -94,6 +98,9 @@
   INSERT INTO public.data_filter(id, id_data, id_filter) VALUES (11, 6, 1);
 
   INSERT INTO public.data_filter(id, id_data, id_filter) VALUES (13, 7, 1);
+
+  INSERT INTO public.data_filter(id, id_data, id_filter) VALUES (14, 8, 1);
+
   /* insert period */
 
   /* PRODES CERRADO */
@@ -331,6 +338,31 @@
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (194, 7, '2021-08-01', '2022-07-31');
   
+    /* PRODES AMAZON NF */
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (210, 8, '1500-08-01', '2007-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (211, 8, '2007-08-01', '2008-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (212, 8, '2008-08-01', '2010-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (213, 8, '2010-08-01', '2013-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (214, 8, '2013-08-01', '2014-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (215, 8, '2014-08-01', '2016-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (216, 8, '2016-08-01', '2018-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (217, 8, '2018-08-01', '2019-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (218, 8, '2019-08-01', '2020-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (219, 8, '2020-08-01', '2021-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (220, 8, '2021-08-01', '2022-07-31');
+
+  -- new years here ...
 
   /* insert loi */
 

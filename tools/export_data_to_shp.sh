@@ -6,15 +6,18 @@
 find ${PWD}/../raw-data-processing -regex ".*\.\(cpg\|shx\|shp\|dbf\|prj\)" -delete
 #
 # "cerrado" "amazon" "legal_amazon" "pantanal" "pampa" "mata_atlantica" "caatinga"
-TARGETS=("pantanal" "pampa" "mata_atlantica" "caatinga")
+TARGETS=("amazon_nf" "amazon" "legal_amazon")
 for TARGET in ${TARGETS[@]}
 do
     database="prodes_${TARGET}_nb"
-    biome_table=""
-    if [[ "${TARGET}" = "amazon" || "${TARGET}" = "legal_amazon" ]];then
-        database="prodes_amazonia_nb"
+    table_suffix=""
+    if [[ "${TARGET}" = "amazon_nf" || "${TARGET}" = "amazon" || "${TARGET}" = "legal_amazon" ]];then
+        database="prodes_amazonia_nb_p2022"
         if [[ "${TARGET}" = "amazon" ]];then
-            biome_table="_biome"
+            table_suffix="_biome"
+        fi;
+        if [[ "${TARGET}" = "amazon_nf" ]];then
+            table_suffix="_nf_dashboard"
         fi;
     fi
 
@@ -34,10 +37,10 @@ do
     do
         if [[ "${CLS}" = "${YEAR_END}" ]];then
             SHP_NAME="${TARGET}_${YEAR_END}"
-            EXPORT_QUERY="SELECT uid as gid, geom FROM $schema.accumulated_deforestation_${YEAR_END}${biome_table}"
+            EXPORT_QUERY="SELECT uid as gid, geom FROM $schema.accumulated_deforestation_${YEAR_END}${table_suffix}"
         else
             SHP_NAME="${TARGET}_${CLS}"
-            EXPORT_QUERY="SELECT uid as gid, geom FROM $schema.yearly_deforestation${biome_table} WHERE class_name='d${CLS}'"
+            EXPORT_QUERY="SELECT uid as gid, geom FROM $schema.yearly_deforestation${table_suffix} WHERE class_name='d${CLS}'"
         fi;
         
         pgsql2shp -f "$OUTPUT_DATA/$SHP_NAME" -h $host -p $port -u $user $database "${EXPORT_QUERY}"
