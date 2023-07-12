@@ -17,7 +17,7 @@ end_date=()
 for ((i=0; i<$length; ++i));
 do
     end_year=${years[$i]}
-    SQL_DATA="SELECT start_date FROM public.period WHERE end_date='${end_year}-07-31'::date AND id_data=(SELECT id FROM public.data WHERE name ILIKE 'PRODES ${TARGET}%');"
+    SQL_DATA="SELECT start_date FROM public.period WHERE end_date='${end_year}-07-31'::date AND id_data=(SELECT id FROM public.data WHERE name ILIKE 'PRODES ${TARGET}');"
     start=($(psql $PG_CON -t -c "$SQL_DATA"))
 
     start_date+=( "${start}" )
