@@ -5,16 +5,25 @@
 # uncomment the next line to delete all existing files exported before
 find ${PWD}/../raw-data-processing -regex ".*\.\(cpg\|shx\|shp\|dbf\|prj\)" -delete
 #
+# A reference year to append on database name and table name
+REF_YEAR="2023"
+#
+# If the data is priority scenes of Legal Amazon/Amazon, use the pattern for the target tables.
+# example: "2023_pri"
+#PRIORITY_PATTERN="_${REF_YEAR}_pri"
+# PRIORITY_PATTERN="_${REF_YEAR}"
+#
 # "cerrado" "amazon" "legal_amazon" "pantanal" "pampa" "mata_atlantica" "caatinga"
-TARGETS=("amazon_nf" "amazon" "legal_amazon")
+# TARGETS=("amazon_nf" "amazon" "legal_amazon")
+TARGETS=("pantanal")
 for TARGET in ${TARGETS[@]}
 do
-    database="prodes_${TARGET}_nb"
-    table_suffix=""
+    database="prodes_${TARGET}_nb_p${REF_YEAR}"
+    table_suffix="${PRIORITY_PATTERN}"
     if [[ "${TARGET}" = "amazon_nf" || "${TARGET}" = "amazon" || "${TARGET}" = "legal_amazon" ]];then
-        database="prodes_amazonia_nb_p2022"
+        database="prodes_amazonia_nb_p${REF_YEAR}"
         if [[ "${TARGET}" = "amazon" ]];then
-            table_suffix="_biome"
+            table_suffix="${PRIORITY_PATTERN}_biome"
         fi;
         if [[ "${TARGET}" = "amazon_nf" ]];then
             table_suffix="_nf_dashboard"

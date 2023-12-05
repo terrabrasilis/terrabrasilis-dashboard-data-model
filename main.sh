@@ -70,9 +70,9 @@ FEATURES="YES"
 #
 # -------------------------------------------------
 # Configure what data you want processing. Used in scripts to LOIS, DATA and FEATURES.
-# Currently the complete list are: "pampa, caatinga, mata_atlantica, pantanal, amazon, cerrado, legal_amazon"
+# Currently the complete list are: "pampa, caatinga, mata_atlantica, pantanal, amazon, amazon_nf, cerrado, legal_amazon"
 # -------------------------------------------------
-processing_filter="amazon_nf, amazon, legal_amazon"
+processing_filter="pantanal"
 # -------------------------------------------------
 # Configure what date you want processing.
 # Common values are the one-year or multi-year list: ("2019" "2020" "2021")
