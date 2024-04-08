@@ -348,27 +348,33 @@
   
     /* PRODES AMAZON NF */
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (210, 8, '1500-08-01', '2007-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (210, 8, '1500-08-01', '2000-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (211, 8, '2007-08-01', '2008-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (211, 8, '2000-08-01', '2002-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (212, 8, '2008-08-01', '2010-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (212, 8, '2002-08-01', '2004-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (213, 8, '2010-08-01', '2013-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (213, 8, '2004-08-01', '2006-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (214, 8, '2013-08-01', '2014-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (214, 8, '2006-08-01', '2008-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (215, 8, '2014-08-01', '2016-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (215, 8, '2008-08-01', '2010-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (216, 8, '2016-08-01', '2018-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (216, 8, '2010-08-01', '2013-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (217, 8, '2018-08-01', '2019-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (217, 8, '2013-08-01', '2014-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (218, 8, '2019-08-01', '2020-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (218, 8, '2014-08-01', '2016-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (219, 8, '2020-08-01', '2021-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (219, 8, '2016-08-01', '2018-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (220, 8, '2021-08-01', '2022-07-31');
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (220, 8, '2018-08-01', '2019-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (221, 8, '2019-08-01', '2020-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (222, 8, '2020-08-01', '2021-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (223, 8, '2021-08-01', '2022-07-31');
 
   -- new years here ...
 

@@ -50,7 +50,7 @@ export PGPASSWORD=$password
 # Use YES to enable or another word to NO
 MODEL="NO"
 METADATA="NO"
-LOIS="NO"
+LOIS="YES"
 DATA="YES"
 FEATURES="YES"
 # -------------------------------------------------
@@ -72,7 +72,7 @@ FEATURES="YES"
 # Configure what data you want processing. Used in scripts to LOIS, DATA and FEATURES.
 # Currently the complete list are: "pampa, caatinga, mata_atlantica, pantanal, amazon, amazon_nf, cerrado, legal_amazon"
 # -------------------------------------------------
-processing_filter="pantanal"
+processing_filter="amazon_nf"
 # -------------------------------------------------
 # Configure what date you want processing.
 # Common values are the one-year or multi-year list: ("2019" "2020" "2021")
