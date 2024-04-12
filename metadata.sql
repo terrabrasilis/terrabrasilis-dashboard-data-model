@@ -376,6 +376,8 @@
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (223, 8, '2021-08-01', '2022-07-31');
 
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (224, 8, '2022-08-01', '2023-07-31');
+
   -- new years here ...
 
   /* insert loi */
