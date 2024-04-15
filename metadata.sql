@@ -38,6 +38,8 @@
 
   INSERT INTO public.application(identifier, name, created) VALUES ('prodes_mata_atlantica', 'Dashboard of the Prodes in the Mata Atlantica', now());
 
+  INSERT INTO public.application(identifier, name, created) VALUES ('prodes_amazon_nf', 'Dashboard of the Prodes in the Amazon non forest areas', now());
+
 
   /* insert class */
 
