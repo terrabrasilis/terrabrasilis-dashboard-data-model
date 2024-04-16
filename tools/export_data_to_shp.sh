@@ -14,8 +14,8 @@ REF_YEAR="2023"
 # PRIORITY_PATTERN="_${REF_YEAR}"
 #
 # "cerrado" "amazon" "amazon_nf" "legal_amazon" "pantanal" "pampa" "mata_atlantica" "caatinga"
-# TARGETS=("amazon_nf" "amazon" "legal_amazon")
-TARGETS=("amazon_nf")
+TARGETS=("amazon_nf" "amazon" "legal_amazon")
+
 for TARGET in ${TARGETS[@]}
 do
     database="prodes_${TARGET}_nb_p${REF_YEAR}"
