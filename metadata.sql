@@ -250,6 +250,8 @@
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (104, 4, '2021-08-01', '2022-07-31');
 
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (105, 4, '2022-08-01', '2023-07-31');
+
   /* PRODES MATA ATLANTICA */
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (120, 5, '1500-08-01', '2000-07-31');
@@ -282,6 +284,8 @@
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (134, 5, '2021-08-01', '2022-07-31');
 
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (135, 5, '2022-08-01', '2023-07-31');
+
   /* PRODES CAATINGA */
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (150, 6, '1500-08-01', '2000-07-31');
@@ -313,6 +317,8 @@
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (163, 6, '2020-08-01', '2021-07-31');
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (164, 6, '2021-08-01', '2022-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (165, 6, '2022-08-01', '2023-07-31');
 
   /* PRODES PANTANAL */
 

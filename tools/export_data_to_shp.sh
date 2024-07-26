@@ -14,7 +14,7 @@ REF_YEAR="2023"
 # PRIORITY_PATTERN="_${REF_YEAR}"
 #
 # "cerrado" "amazon" "amazon_nf" "legal_amazon" "pantanal" "pampa" "mata_atlantica" "caatinga"
-TARGETS=("amazon_nf" "amazon" "legal_amazon")
+TARGETS=("pampa" "caatinga")
 
 for TARGET in ${TARGETS[@]}
 do
