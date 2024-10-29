@@ -3,18 +3,19 @@
 # Used to prepare the shapefiles to input to the scripts of the Dashboard data model.
 #
 # uncomment the next line to delete all existing files exported before
-find ${PWD}/../raw-data-processing -regex ".*\.\(cpg\|shx\|shp\|dbf\|prj\)" -delete
+#find ${PWD}/../raw-data-processing -regex ".*\.\(cpg\|shx\|shp\|dbf\|prj\)" -delete
 #
 # A reference year to append on database name and table name
-REF_YEAR="2023"
+REF_YEAR="2024"
 #
 # If the data is priority scenes of Legal Amazon/Amazon, use the pattern for the target tables.
+# default is no value
+PRIORITY_PATTERN=""
 # example: "2023_pri"
 #PRIORITY_PATTERN="_${REF_YEAR}_pri"
-# PRIORITY_PATTERN="_${REF_YEAR}"
 #
-# "cerrado" "amazon" "amazon_nf" "legal_amazon" "pantanal" "pampa" "mata_atlantica" "caatinga"
-TARGETS=("pampa" "caatinga")
+# "cerrado" "amazon" "legal_amazon" "amazon_nf" "pantanal" "pampa" "mata_atlantica" "caatinga"
+TARGETS=("cerrado")  #"amazon" "legal_amazon")
 
 for TARGET in ${TARGETS[@]}
 do
