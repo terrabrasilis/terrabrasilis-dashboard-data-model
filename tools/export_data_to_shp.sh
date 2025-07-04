@@ -1,21 +1,21 @@
 #!/bin/bash
 #
-# Used to prepare the shapefiles to input to the scripts of the Dashboard data model.
+# Used to prepare input shapefiles for Dashboard data model scripts.
 #
 # uncomment the next line to delete all existing files exported before
-#find ${PWD}/../raw-data-processing -regex ".*\.\(cpg\|shx\|shp\|dbf\|prj\)" -delete
+find ${PWD}/../raw-data-processing -regex ".*\.\(cpg\|shx\|shp\|dbf\|prj\)" -delete
 #
 # A reference year to append on database name and table name
 REF_YEAR="2024"
 #
-# If the data is priority scenes of Legal Amazon/Amazon, use the pattern for the target tables.
+# If the data is priority scenes of Legal Amazon or Amazon biome, use the pattern for the target tables.
 # default is no value
 PRIORITY_PATTERN=""
 # example: "2023_pri"
 #PRIORITY_PATTERN="_${REF_YEAR}_pri"
 #
 # "cerrado" "amazon" "legal_amazon" "amazon_nf" "pantanal" "pampa" "mata_atlantica" "caatinga"
-TARGETS=("cerrado")  #"amazon" "legal_amazon")
+TARGETS=("amazon" "legal_amazon")
 
 for TARGET in ${TARGETS[@]}
 do
