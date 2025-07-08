@@ -6,7 +6,7 @@
 find ${PWD}/../raw-data-processing -regex ".*\.\(cpg\|shx\|shp\|dbf\|prj\)" -delete
 #
 # A reference year to append on database name and table name
-REF_YEAR="2024"
+REF_YEAR="2023"
 #
 # If the data is priority scenes of Legal Amazon or Amazon biome, use the pattern for the target tables.
 # default is no value
@@ -15,7 +15,7 @@ PRIORITY_PATTERN=""
 #PRIORITY_PATTERN="_${REF_YEAR}_pri"
 #
 # "cerrado" "amazon" "legal_amazon" "amazon_nf" "pantanal" "pampa" "mata_atlantica" "caatinga"
-TARGETS=("amazon" "legal_amazon")
+TARGETS=("amazon_nf" "pantanal" "pampa" "mata_atlantica" "caatinga")
 
 for TARGET in ${TARGETS[@]}
 do
@@ -47,7 +47,11 @@ do
     do
         if [[ "${CLS}" = "${YEAR_END}" ]];then
             SHP_NAME="${TARGET}_${YEAR_END}"
-            EXPORT_QUERY="SELECT uid as gid, geom FROM $schema.accumulated_deforestation_${YEAR_END}${table_suffix}"
+            EXPORT_QUERY="SELECT gid, geom FROM ( "
+            EXPORT_QUERY="${EXPORT_QUERY}    SELECT uid as gid, geom FROM public.accumulated_deforestation_${YEAR_END}${table_suffix} "
+            EXPORT_QUERY="${EXPORT_QUERY}    UNION "
+            EXPORT_QUERY="${EXPORT_QUERY}    SELECT uid as gid, geom FROM public.residual${table_suffix} "
+            EXPORT_QUERY="${EXPORT_QUERY}) tb1 "
         else
             SHP_NAME="${TARGET}_${CLS}"
             EXPORT_QUERY="SELECT uid as gid, geom FROM $schema.yearly_deforestation${table_suffix} WHERE class_name='d${CLS}'"
