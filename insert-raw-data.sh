@@ -58,6 +58,7 @@ for d in */ ; do
                 RESPONSE_QUERY=$($BASE_PATH/exec_query.sh $user $host $port $database "$Query")
                 echo "PSQL Return: $RESPONSE_QUERY"
 
+                # drop the primary table to save disk space
                 DROP_OLD="DROP TABLE IF EXISTS private.$data CASCADE;"
                 psql $PG_CON -c "$DROP_OLD"
 
