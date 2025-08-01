@@ -80,7 +80,7 @@ In the `run_all.sh` file, adjust the database connection settings, so the comman
 ### 11. Running the `run_all.sh` Script
 Finally, run the `run_all.sh` file.
 
-### 12. Verificação do Processamento
+### 12. Verify Process
 If the processing is successful, the generated log file should contain a line similar to this at the end:
 
 ```bash
