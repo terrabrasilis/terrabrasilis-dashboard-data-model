@@ -145,6 +145,8 @@
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (19, 1, '2023-08-01', '2024-07-31');
 
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (20, 1, '2024-08-01', '2025-07-31');
+
   /* PRODES AMAZON */
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (30, 2, '1500-08-01', '2007-07-31');
@@ -182,6 +184,8 @@
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (46, 2, '2022-08-01', '2023-07-31');
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (47, 2, '2023-08-01', '2024-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (48, 2, '2024-08-01', '2025-07-31');
 
   -- new years here ...
 
@@ -221,6 +225,8 @@
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (76, 3, '2022-08-01', '2023-07-31');
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (77, 3, '2023-08-01', '2024-07-31');
+
+  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (78, 3, '2024-08-01', '2025-07-31');
 
   -- new years here ...
 

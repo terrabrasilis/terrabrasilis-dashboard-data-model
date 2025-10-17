@@ -6,16 +6,16 @@
 find ${PWD}/../raw-data-processing -regex ".*\.\(cpg\|shx\|shp\|dbf\|prj\)" -delete
 #
 # A reference year to append on database name and table name
-REF_YEAR="2023"
+REF_YEAR="2025"
 #
 # If the data is priority scenes of Legal Amazon or Amazon biome, use the pattern for the target tables.
 # default is no value
 PRIORITY_PATTERN=""
 # example: "2023_pri"
-#PRIORITY_PATTERN="_${REF_YEAR}_pri"
+PRIORITY_PATTERN="_${REF_YEAR}_pri"
 #
 # "cerrado" "amazon" "legal_amazon" "amazon_nf" "pantanal" "pampa" "mata_atlantica" "caatinga"
-TARGETS=("amazon_nf" "pantanal" "pampa" "mata_atlantica" "caatinga")
+TARGETS=("cerrado")
 
 for TARGET in ${TARGETS[@]}
 do
@@ -29,6 +29,8 @@ do
         if [[ "${TARGET}" = "amazon_nf" ]];then
             table_suffix="_nf_biome"
         fi;
+    else
+        table_suffix=""
     fi
 
     source ./pgconfig
