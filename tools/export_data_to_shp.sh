@@ -5,24 +5,38 @@
 # uncomment the next line to delete all existing files exported before
 find ${PWD}/../raw-data-processing -regex ".*\.\(cpg\|shx\|shp\|dbf\|prj\)" -delete
 #
-# A reference year to append on database name and table name
-REF_YEAR="2025"
-#
 # If the data is priority scenes of Legal Amazon or Amazon biome, use the pattern for the target tables.
-# default is no value
-PRIORITY_PATTERN=""
-# example: "2023_pri"
-PRIORITY_PATTERN="_${REF_YEAR}_pri"
+# Is the Prioriry data? (expected values: "yes" or "no")
+IS_PRIORITY="yes"
 #
-# "cerrado" "amazon" "legal_amazon" "amazon_nf" "pantanal" "pampa" "mata_atlantica" "caatinga"
-TARGETS=("cerrado")
+# Is the MARCO UE databases? (expected values: "yes" or "no")
+IS_MARCO="no"
+#
+#
+# list of names used as reference for each database and the YEAR for each database
+# PRODES_DBS=("amazon" "legal_amazon" "amazon_nf" "cerrado" "pantanal" "pampa" "mata_atlantica" "caatinga")
+PRODES_DBS=("amazon" "legal_amazon")
+# Used as a database name suffix. Consider that the default database name is prodes_<biome>_nb_p<BASE_YEAR>
+# BASE_YEARS=("2024" "2024" "2024" "2025" "2025" "2024" "2024" "2024")
+BASE_YEARS=("2025" "2025")
 
-for TARGET in ${TARGETS[@]}
+# loop to export all tables of each database for an schema define into pgconfig file
+length=${#PRODES_DBS[@]}
+for ((i=0; i<$length; ++i));
 do
-    database="prodes_${TARGET}_nb_p${REF_YEAR}"
+    TARGET=${PRODES_DBS[$i]}
+    BASE_YEAR=${BASE_YEARS[$i]}
+
+    # Priority database?
+    PRIORITY_PATTERN=""
+    if [[ "yes" = "${IS_PRIORITY}" ]]; then
+        PRIORITY_PATTERN="_${BASE_YEAR}_pri"
+    fi;
+
+    database="prodes_${TARGET}_nb_p${BASE_YEAR}"
     table_suffix="${PRIORITY_PATTERN}"
     if [[ "${TARGET}" = "amazon_nf" || "${TARGET}" = "amazon" || "${TARGET}" = "legal_amazon" ]];then
-        database="prodes_amazonia_nb_p${REF_YEAR}"
+        database="prodes_amazonia_nb_p${BASE_YEAR}"
         if [[ "${TARGET}" = "amazon" ]];then
             table_suffix="${PRIORITY_PATTERN}_biome"
         fi;
@@ -31,7 +45,11 @@ do
         fi;
     else
         table_suffix=""
-    fi
+    fi;
+    # Marco UE database?
+    if [[ "yes" = "${IS_MARCO}" ]]; then
+        database="${database}_marco"
+    fi;
 
     source ./pgconfig
     export PGPASSWORD=$password
@@ -47,7 +65,7 @@ do
 
     for CLS in ${years[@]}
     do
-        if [[ "${CLS}" = "${YEAR_END}" ]];then
+        if [[ "${CLS}" = "${YEAR_END}" ]]; then
             SHP_NAME="${TARGET}_${YEAR_END}"
             EXPORT_QUERY="SELECT gid, geom FROM ( "
             EXPORT_QUERY="${EXPORT_QUERY}    SELECT uid as gid, geom FROM public.accumulated_deforestation_${YEAR_END}${table_suffix} "
@@ -57,9 +75,15 @@ do
         else
             SHP_NAME="${TARGET}_${CLS}"
             EXPORT_QUERY="SELECT uid as gid, geom FROM $schema.yearly_deforestation${table_suffix} WHERE class_name='d${CLS}'"
+            SHP_NAME_MARCO="${TARGET}_marco_${CLS}"
+            EXPORT_QUERY_MARCO="SELECT uid as gid, geom FROM $schema.yearly_deforestation${table_suffix} WHERE class_name='marco_d${CLS}'"
         fi;
         
         pgsql2shp -f "$OUTPUT_DATA/$SHP_NAME" -h $host -p $port -u $user $database "${EXPORT_QUERY}"
+
+        if [[ "${CLS}" = "2020" ]]; then
+            pgsql2shp -f "$OUTPUT_DATA/$SHP_NAME_MARCO" -h $host -p $port -u $user $database "${EXPORT_QUERY_MARCO}"
+        fi;
     done
 
 done # end of TARGETS

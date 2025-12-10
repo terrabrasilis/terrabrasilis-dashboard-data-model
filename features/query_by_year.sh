@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# load functions
+. ./build_query.sh
+
 length=${#years[@]}
 
 echo ""
@@ -13,37 +16,35 @@ do
 
   TB_EXISTS="SELECT 'YES' WHERE (SELECT EXISTS ( SELECT 1 FROM information_schema.tables WHERE table_schema = 'private' AND table_name = '${CURRENT_DATA_TABLE}' ));"
   HAS_TABLE=($(psql -p $port -d $database -U $user -h $host -t -c "$TB_EXISTS"))
-  # If table no exists, continue to next.
+
+  # If table exists, process than.
   if [[ "$HAS_TABLE" = "YES" ]]; then
 
-      Query="INSERT INTO features (id_period, id_data_loi_loinames, id_data_class, created_at, gid_polygon, geom)
-      SELECT
-        ( SELECT per.id FROM period as per
-        INNER JOIN data ON (per.start_date = '${start_date[$i]}'
-        AND per.end_date = '${end_date[$i]}'
-        AND data.id = per.id_data
-        AND data.name = '$data') ) as id_period,
-        dll.id as id_data_loi_loinames,
-        ( SELECT dc.id FROM data_class as dc
-        INNER JOIN class ON (class.id = dc.id_class AND class.name = '$class')
-        INNER JOIN data ON (data.id = dc.id_data AND data.name = '$data') ) as id_data_class,
-        now() as created_at,
-        mask.fid as gid_polygon,
-        CASE WHEN ST_CoveredBy(mask.geom, l.geom)
-        THEN ST_Multi(ST_MakeValid(mask.geom))
-        ELSE ST_Multi(ST_CollectionExtract(ST_Intersection(mask.geom, l.geom), 3))
-        END AS geom
-      FROM private.${CURRENT_DATA_TABLE} AS mask
-      INNER JOIN loinames l ON ( (mask.geom && l.geom) AND ST_Intersects(mask.geom, l.geom) )
-      INNER JOIN loi_loinames ll ON (l.gid = ll.gid_loinames AND ll.id_loi = $loi)
-      INNER JOIN data_loi_loinames dll ON (dll.id_loi_loinames = ll.id)
-      INNER JOIN data d ON (d.id = dll.id_data AND d.name = '$data');"
+      Query=$(build_query_by_year "${start_date[$i]}" "${end_date[$i]}" "${data}" "${class}" "${CURRENT_DATA_TABLE}" "${loi}")
       echo $Query
       RESPONSE_QUERY=$(../exec_query.sh $user $host $port $database "$Query")
       echo "PSQL Return: $RESPONSE_QUERY"
-      
   else
+    # If table no exists, continue to next.
     echo "Abort because input table (${CURRENT_DATA_TABLE}) not exists!"
-  fi
+  fi;
+
+  # To process Marco UE data
+  if [[ "${years[$i]}" = "2020" ]]; then
+    # define current table name for MARCO UE
+    CURRENT_DATA_TABLE_MARCO="${raw_data_table_prefix}marco_${years[$i]}_subdivided"
+
+    TB_EXISTS_MARCO="SELECT 'YES' WHERE (SELECT EXISTS ( SELECT 1 FROM information_schema.tables WHERE table_schema = 'private' AND table_name = '${CURRENT_DATA_TABLE_MARCO}' ));"
+    HAS_TABLE_MARCO=($(psql -p $port -d $database -U $user -h $host -t -c "$TB_EXISTS_MARCO"))
+    # If table exists, process than.
+    if [[ "$HAS_TABLE_MARCO" = "YES" ]]; then
+
+        Query=$(build_query_by_year "2020-08-01" "2020-12-31" "${data}" "${class}" "${CURRENT_DATA_TABLE_MARCO}" "${loi}")
+        echo $Query
+        RESPONSE_QUERY=$(../exec_query.sh $user $host $port $database "$Query")
+        echo "PSQL Return: $RESPONSE_QUERY"
+    fi;
+  fi;
+
 
 done >> "output_${data_features}.log"
