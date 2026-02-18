@@ -47,19 +47,19 @@
 
   /* insert data */
 
-  INSERT INTO public.data(id, name, description) VALUES (1, 'PRODES CERRADO', '1 year temporal resolution');
+  INSERT INTO public.data(id, name, description) VALUES (1, 'PRODES CERRADO', 'year temporal resolution');
 
-  INSERT INTO public.data(id, name, description) VALUES (2, 'PRODES AMAZON', '1 year temporal resolution');
+  INSERT INTO public.data(id, name, description) VALUES (2, 'PRODES AMAZON', 'year temporal resolution');
 
-  INSERT INTO public.data(id, name, description) VALUES (3, 'PRODES LEGAL AMAZON', '1 year temporal resolution');
+  INSERT INTO public.data(id, name, description) VALUES (3, 'PRODES LEGAL AMAZON', 'year temporal resolution');
 
-  INSERT INTO public.data(id, name, description) VALUES (4, 'PRODES PAMPA', '1 year temporal resolution');
+  INSERT INTO public.data(id, name, description) VALUES (4, 'PRODES PAMPA', 'year temporal resolution');
 
-  INSERT INTO public.data(id, name, description) VALUES (5, 'PRODES MATA ATLANTICA', '1 year temporal resolution');
+  INSERT INTO public.data(id, name, description) VALUES (5, 'PRODES MATA ATLANTICA', 'year temporal resolution');
 
-  INSERT INTO public.data(id, name, description) VALUES (6, 'PRODES CAATINGA', '1 year temporal resolution');
+  INSERT INTO public.data(id, name, description) VALUES (6, 'PRODES CAATINGA', 'year temporal resolution');
 
-  INSERT INTO public.data(id, name, description) VALUES (7, 'PRODES PANTANAL', '1 year temporal resolution');
+  INSERT INTO public.data(id, name, description) VALUES (7, 'PRODES PANTANAL', 'year temporal resolution');
 
   INSERT INTO public.data(id, name, description) VALUES (8, 'PRODES AMAZON NF', 'year temporal resolution');
 
@@ -147,8 +147,6 @@
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (20, 1, '2024-08-01', '2025-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (21, 1, '2020-08-01', '2020-12-31'); -- MARCO UE
-
   /* PRODES AMAZON */
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (30, 2, '1500-08-01', '2007-07-31');
@@ -188,8 +186,6 @@
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (47, 2, '2023-08-01', '2024-07-31');
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (48, 2, '2024-08-01', '2025-07-31');
-
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (49, 2, '2020-08-01', '2020-12-31'); -- MARCO UE
 
   -- new years here ...
 
@@ -232,8 +228,6 @@
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (78, 3, '2024-08-01', '2025-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (79, 3, '2020-08-01', '2020-12-31'); -- MARCO UE
-
   -- new years here ...
 
   /* PRODES PAMPA */
@@ -272,8 +266,6 @@
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (106, 4, '2023-08-01', '2024-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (107, 4, '2020-08-01', '2020-12-31'); -- MARCO UE
-
   /* PRODES MATA ATLANTICA */
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (120, 5, '1500-08-01', '2000-07-31');
@@ -310,8 +302,6 @@
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (136, 5, '2023-08-01', '2024-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (137, 5, '2020-08-01', '2020-12-31'); -- MARCO UE
-
   /* PRODES CAATINGA */
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (150, 6, '1500-08-01', '2000-07-31');
@@ -347,8 +337,6 @@
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (165, 6, '2022-08-01', '2023-07-31');
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (166, 6, '2023-08-01', '2024-07-31');
-
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (167, 6, '2020-08-01', '2020-12-31'); -- MARCO UE
 
   /* PRODES PANTANAL */
 
@@ -387,8 +375,6 @@
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (196, 7, '2023-08-01', '2024-07-31');
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (197, 7, '2024-08-01', '2025-07-31');
-
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (198, 7, '2020-08-01', '2020-12-31'); -- MARCO UE
   
     /* PRODES AMAZON NF */
 
@@ -424,8 +410,6 @@
 
   INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (225, 8, '2023-08-01', '2024-07-31');
 
-  INSERT INTO public.period(id, id_data, start_date, end_date) VALUES (226, 8, '2020-08-01', '2020-12-31'); -- MARCO UE
-
   -- new years here ...
 
   /* insert loi */
@@ -437,9 +421,6 @@
   INSERT INTO public.loi(id, name, description) VALUES (3, 'consunit', 'Conservation units of Brazil');
 
   INSERT INTO public.loi(id, name, description) VALUES (4, 'indi', 'Indigenous Areas of Brazil');
-
-  -- INSERT INTO public.loi(id, name, description) VALUES (5, 'pathrow', 'Landsat WSR2 Descending Path Row');
-
 
   /* Enable all constraints after commit */
   ALTER TABLE public.features ENABLE TRIGGER ALL;
