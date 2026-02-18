@@ -7,18 +7,18 @@ find ${PWD}/../raw-data-processing -regex ".*\.\(cpg\|shx\|shp\|dbf\|prj\)" -del
 #
 # If the data is priority scenes of Legal Amazon or Amazon biome, use the pattern for the target tables.
 # Is the Prioriry data? (expected values: "yes" or "no")
-IS_PRIORITY="yes"
+IS_PRIORITY="no"
 #
 # Is the MARCO UE databases? (expected values: "yes" or "no")
-IS_MARCO="no"
+IS_MARCO="yes"
 #
 #
 # list of names used as reference for each database and the YEAR for each database
 # PRODES_DBS=("amazon" "legal_amazon" "amazon_nf" "cerrado" "pantanal" "pampa" "mata_atlantica" "caatinga")
-PRODES_DBS=("amazon" "legal_amazon")
+PRODES_DBS=("amazon" "legal_amazon" "amazon_nf" "cerrado" "pantanal" "pampa" "mata_atlantica" "caatinga")
 # Used as a database name suffix. Consider that the default database name is prodes_<biome>_nb_p<BASE_YEAR>
-# BASE_YEARS=("2024" "2024" "2024" "2025" "2025" "2024" "2024" "2024")
-BASE_YEARS=("2025" "2025")
+BASE_YEARS=("2024" "2024" "2024" "2025" "2025" "2024" "2024" "2024")
+#BASE_YEARS=("2024")
 
 # loop to export all tables of each database for an schema define into pgconfig file
 length=${#PRODES_DBS[@]}
@@ -51,6 +51,9 @@ do
         database="${database}_marco"
     fi;
 
+    echo "Exporting data from database: ${database}"
+    echo "******************************************"
+
     source ./pgconfig
     export PGPASSWORD=$password
 
@@ -71,19 +74,15 @@ do
             EXPORT_QUERY="${EXPORT_QUERY}    SELECT uid as gid, geom FROM public.accumulated_deforestation_${YEAR_END}${table_suffix} "
             EXPORT_QUERY="${EXPORT_QUERY}    UNION "
             EXPORT_QUERY="${EXPORT_QUERY}    SELECT uid as gid, geom FROM public.residual${table_suffix} "
+            EXPORT_QUERY="${EXPORT_QUERY}    UNION "
+            EXPORT_QUERY="${EXPORT_QUERY}    SELECT uid as gid, geom FROM public.marco_eu_deforestation${table_suffix} "
             EXPORT_QUERY="${EXPORT_QUERY}) tb1 "
         else
             SHP_NAME="${TARGET}_${CLS}"
             EXPORT_QUERY="SELECT uid as gid, geom FROM $schema.yearly_deforestation${table_suffix} WHERE class_name='d${CLS}'"
-            SHP_NAME_MARCO="${TARGET}_marco_${CLS}"
-            EXPORT_QUERY_MARCO="SELECT uid as gid, geom FROM $schema.yearly_deforestation${table_suffix} WHERE class_name='marco_d${CLS}'"
         fi;
         
         pgsql2shp -f "$OUTPUT_DATA/$SHP_NAME" -h $host -p $port -u $user $database "${EXPORT_QUERY}"
-
-        if [[ "${CLS}" = "2020" ]]; then
-            pgsql2shp -f "$OUTPUT_DATA/$SHP_NAME_MARCO" -h $host -p $port -u $user $database "${EXPORT_QUERY_MARCO}"
-        fi;
     done
 
 done # end of TARGETS
