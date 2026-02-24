@@ -15,10 +15,10 @@ IS_MARCO="yes"
 #
 # list of names used as reference for each database and the YEAR for each database
 # PRODES_DBS=("amazon" "legal_amazon" "amazon_nf" "cerrado" "pantanal" "pampa" "mata_atlantica" "caatinga")
-PRODES_DBS=("amazon" "legal_amazon" "amazon_nf" "cerrado" "pantanal" "pampa" "mata_atlantica" "caatinga")
+PRODES_DBS=("amazon" "legal_amazon")
 # Used as a database name suffix. Consider that the default database name is prodes_<biome>_nb_p<BASE_YEAR>
-BASE_YEARS=("2024" "2024" "2024" "2025" "2025" "2024" "2024" "2024")
-#BASE_YEARS=("2024")
+#BASE_YEARS=("2025" "2025" "2024" "2025" "2025" "2024" "2024" "2024")
+BASE_YEARS=("2025" "2025")
 
 # loop to export all tables of each database for an schema define into pgconfig file
 length=${#PRODES_DBS[@]}
