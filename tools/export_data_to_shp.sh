@@ -75,7 +75,7 @@ do
             EXPORT_QUERY="${EXPORT_QUERY}    UNION "
             EXPORT_QUERY="${EXPORT_QUERY}    SELECT fid as gid, geom FROM public.residual${table_suffix} "
             EXPORT_QUERY="${EXPORT_QUERY}    UNION "
-            EXPORT_QUERY="${EXPORT_QUERY}    SELECT fid as gid, geom FROM public.marco_eu_deforestation${table_suffix} "
+            EXPORT_QUERY="${EXPORT_QUERY}    SELECT fid as gid, geom FROM public.marco_eu_deforestation${table_suffix} WHERE def_prodes IS NULL"
             EXPORT_QUERY="${EXPORT_QUERY}) tb1 "
         else
             SHP_NAME="${TARGET}_${CLS}"
