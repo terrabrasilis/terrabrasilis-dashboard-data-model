@@ -45,7 +45,7 @@ for d in */ ; do
                 DROP_OLD="DROP TABLE IF EXISTS private."$data"_subdivided CASCADE;"
                 psql ${PG_CON} -c "${DROP_OLD}"
 
-                SEQ="CREATE SEQUENCE private."${data}"_uid_seq INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9999999999 CACHE 1;"
+                SEQ="CREATE SEQUENCE private."${data}"_fid_seq INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9999999999 CACHE 1;"
                 psql ${PG_CON} -c "${SEQ}"
 
                 shp2pgsql -I -s 4674 $shapefile private.$data | psql $PG_CON -q
@@ -54,9 +54,9 @@ for d in */ ; do
 
                 UPDATE private."$data" SET geom = ST_SetSRID(geom, 4674) WHERE ST_SRID(geom) <> 4674;
 
-                UPDATE private."$data" SET uid = nextval('private."${data}"_uid_seq'::regclass);
+                UPDATE private."$data" SET fid = nextval('private."${data}"_fid_seq'::regclass);
                 
-                CREATE TABLE private."$data"_subdivided AS SELECT gid || '_' || gen_random_uuid() AS fid, st_subdivide(geom) AS geom FROM private."$data";
+                CREATE TABLE private."$data"_subdivided AS SELECT gid || '_' || gen_random_ufid() AS fid, st_subdivide(geom) AS geom FROM private."$data";
 
                 CREATE INDEX "$data"_subdivided_geom_idx ON private."$data"_subdivided USING GIST (geom);"
 
@@ -66,7 +66,7 @@ for d in */ ; do
                 # drop the primary table to save disk space
                 DROP_OLD="DROP TABLE IF EXISTS private.$data CASCADE;"
                 psql ${PG_CON} -c "${DROP_OLD}"
-                DROP_SEQ="DROP SEQUENCE IF EXISTS private."${data}"_uid_seq;"
+                DROP_SEQ="DROP SEQUENCE IF EXISTS private."${data}"_fid_seq;"
                 psql ${PG_CON} -c "${DROP_SEQ}"
 
             done

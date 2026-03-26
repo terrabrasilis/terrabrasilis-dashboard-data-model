@@ -71,15 +71,15 @@ do
         if [[ "${CLS}" = "${YEAR_END}" ]]; then
             SHP_NAME="${TARGET}_${YEAR_END}"
             EXPORT_QUERY="SELECT gid, geom FROM ( "
-            EXPORT_QUERY="${EXPORT_QUERY}    SELECT uid as gid, geom FROM public.accumulated_deforestation_${YEAR_END}${table_suffix} "
+            EXPORT_QUERY="${EXPORT_QUERY}    SELECT fid as gid, geom FROM public.accumulated_deforestation_${YEAR_END}${table_suffix} "
             EXPORT_QUERY="${EXPORT_QUERY}    UNION "
-            EXPORT_QUERY="${EXPORT_QUERY}    SELECT uid as gid, geom FROM public.residual${table_suffix} "
+            EXPORT_QUERY="${EXPORT_QUERY}    SELECT fid as gid, geom FROM public.residual${table_suffix} "
             EXPORT_QUERY="${EXPORT_QUERY}    UNION "
-            EXPORT_QUERY="${EXPORT_QUERY}    SELECT uid as gid, geom FROM public.marco_eu_deforestation${table_suffix} "
+            EXPORT_QUERY="${EXPORT_QUERY}    SELECT fid as gid, geom FROM public.marco_eu_deforestation${table_suffix} "
             EXPORT_QUERY="${EXPORT_QUERY}) tb1 "
         else
             SHP_NAME="${TARGET}_${CLS}"
-            EXPORT_QUERY="SELECT uid as gid, geom FROM $schema.yearly_deforestation${table_suffix} WHERE class_name='d${CLS}'"
+            EXPORT_QUERY="SELECT fid as gid, geom FROM $schema.yearly_deforestation${table_suffix} WHERE class_name='d${CLS}'"
         fi;
         
         pgsql2shp -f "$OUTPUT_DATA/$SHP_NAME" -h $host -p $port -u $user $database "${EXPORT_QUERY}"
